@@ -1,13 +1,3 @@
-<#  Examples:
-    Get-Translate game ru
-    Get-Translate -Text "I like to play games" -Language ru
-    Get-Translate -Text "I like to play games" -Language ru -Provider DeepL
-    Get-DeepLX -Text "I like to play games" ru
-    Start-DeepLX -Job
-    Get-DeepLX -Server 192.168.3.99 -Text "I like to play games" ru
-    Stop-DeepLX
-    Start-DeepLX -Status
-#>
 function Get-Translate {
     <#
     .SYNOPSIS
@@ -15,14 +5,17 @@ function Get-Translate {
     .DESCRIPTION
     Example:
     Get-Translate game ru
-    Get-Translate -Text "I like to play games" -Language ru
-    Get-Translate -Text "I like to play games" -Language ru -Provider DeepL
+    Get-Translate -Text "I like to play games" ru
+    Get-Translate -Text "Я люблю играть в игры" -LanguageTarget en -LanguageSource ru
+    $Token = "YOUR_TOKEN"
+    Get-Translate -Text "I like to play games" -LanguageTarget ru -Provider DeepL -Key $Token
     .LINK
     https://github.com/Lifailon/Console-Translate
     #>
     param (
         [Parameter(Mandatory,ValueFromPipeline)][string[]]$Text,
-        [string]$Language = "RU",
+        [string]$LanguageTarget = "RU",
+        [string]$LanguageSource,
         [ValidateSet("Google","DeepL")][string]$Provider = "Google",
         [string]$Key = "AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw" # Public API Key for Google Translate
     )
@@ -33,10 +26,17 @@ function Get-Translate {
         }
         $Body = @{
             "q" = "$Text"
-            "target" = "$Language"
+            "target" = "$LanguageTarget"
+            "source" = "$LanguageSource"
         } | ConvertTo-Json
-        $Response = Invoke-RestMethod -Uri $url -Method Post -Headers $Header -Body $Body
-        $Response.Data.translations.translatedText
+        $WebClient = New-Object System.Net.WebClient
+        #$WebClient.Headers.Add("Content-Type", "application/json")
+        foreach ($key in $Header.Keys) {
+            $WebClient.Headers.Add($key, $Header[$key])
+        }
+        #$Response = Invoke-RestMethod -Uri $url -Method Post -Headers $Header -Body $Body
+        $Response = $WebClient.UploadString($url, "POST", $Body) | ConvertFrom-Json
+        $Response.data.translations.translatedText
     }
     elseif ($Provider -eq "DeepL") {
         $url = "https://api-free.deepl.com/v2/translate"
@@ -46,9 +46,14 @@ function Get-Translate {
         }
         $Body = @{
             "text" = "$Text"
-            "target_lang" = "$Language"
+            "target_lang" = "$LanguageTarget"
+            "source_lang" = "$LanguageSource"
         } | ConvertTo-Json
-        $Response = Invoke-RestMethod -Uri $url -Method Post -Headers $Header -Body $Body
+        $WebClient = New-Object System.Net.WebClient
+        foreach ($key in $Header.Keys) {
+            $WebClient.Headers.Add($key, $Header[$key])
+        }
+        $Response = $WebClient.UploadString($url, "POST", $Body) | ConvertFrom-Json
         $Response.translations.text
     }
 }
@@ -59,7 +64,7 @@ function Start-DeepLX {
     .DESCRIPTION
     Example:
     Start-DeepLX
-    Start-DeepLX -Token "7777777777" -Port 1181
+    Start-DeepLX -Token "1111111111" -Port 1181
     Run in background job:
     Start-DeepLX -Job
     Check server status:
@@ -69,7 +74,7 @@ function Start-DeepLX {
     https://github.com/OwO-Network/DeepLX
     #>
     param (
-        [string]$Token = "XXXXXXXXXX",
+        [string]$Token = "7777777777",
         [int]$Port = 1188,
         [switch]$Job,
         [switch]$Status
@@ -111,20 +116,23 @@ function Get-DeepLX {
     <#
     .SYNOPSIS
     Text translation using DeepLX server Free API (no token required)
+    For a local request, the server is started for the duration of the get response
     .DESCRIPTION
     Example use local server:
     Get-DeepLX -Text "I like to play games" ru
+    Get-DeepLX -Text "Я люблю играть в игры" en ru
     Example use remote server:
     Get-DeepLX -Server 192.168.3.99 -Text "I like to play games" ru
-    Get-DeepLX -Server 192.168.3.99 -Text "I like to play games" ru -Key "7777777777" -Port 1181
+    Get-DeepLX -Server 192.168.3.99 -Text "I like to play games" -LanguageTarget ru -Key "1111111111" -Port 1181
     .LINK
     https://github.com/Lifailon/Console-Translate
     https://github.com/OwO-Network/DeepLX
     #>
     param (
         [Parameter(Mandatory,ValueFromPipeline)][string[]]$Text,
-        [string]$Language = "RU",
-        [string]$Key = "XXXXXXXXXX",
+        [string]$LanguageTarget = "RU",
+        [string]$LanguageSource,
+        [string]$Key = "7777777777",
         [string]$Server,
         [int]$Port = 1188
     )
@@ -145,9 +153,14 @@ function Get-DeepLX {
     }
     $Body = @{
         "text" = "$Text"
-        "target_lang" = "$Language"
+        "target_lang" = "$LanguageTarget"
+        "source_lang" = "$LanguageSource"
     } | ConvertTo-Json
-    $Response = Invoke-RestMethod -Uri $url -Method Post -Headers $Header -Body $Body
+    $WebClient = New-Object System.Net.WebClient
+    foreach ($key in $Header.Keys) {
+        $WebClient.Headers.Add($key, $Header[$key])
+    }
+    $Response = $WebClient.UploadString($url, "POST", $Body) | ConvertFrom-Json
     $Response.data
     if ($Server_Running -eq "True") {
         Stop-DeepLX
