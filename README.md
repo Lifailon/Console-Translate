@@ -103,30 +103,19 @@ Get-DeepLX
 When calling the module, if the remote server address is not specified (**parameter: -Server**), the **local server is started for the time of sending a request and receiving a response**, after which the server stops, it allows not to keep resources and socket open.
 
 ```PowerShell
-> Get-DeepLX -Text "I like to play games" ru
-Я люблю играть в игры
+> Get-DeepLX "Get select" de
+Auswahl treffen
 
-> Get-DeepLX -Text "Я люблю играть в игры" en
-I like to play games
+> Get-DeepLX "Get select" ru
+Получить выбор
 
-> Get-DeepLX "Сделать выбор" en -Alternatives
-To make a choice
-Make a choice.
-Make your choice
+> Get-DeepLX "Получить выбор" en
+Get Choice
 
-> Get-DeepLX -Text "When calling the module, if the remote server address is not specified (parameter: -Server), 
-the local server is started for the time of sending a request and receiving a response, after which the server stops, 
-it allows not to keep resources and socket open." ru
-При вызове модуля, если не указан адрес удаленного сервера (параметр: -Server)
-запускается локальный сервер на время отправки запроса и получения ответа, после чего сервер останавливается,
-это позволяет не держать ресурсы и сокет открытыми.
-
-> Get-DeepLX -Text "When calling the module, if the remote server address is not specified (parameter: -Server), 
-the local server is started for the time of sending a request and receiving a response, after which the server stops, 
-it allows not to keep resources and socket open." de
-Beim Aufruf des Moduls wird, wenn die Adresse des entfernten Servers nicht angegeben wird (Parameter: -Server),
-wird der lokale Server für die Zeit des Sendens einer Anfrage und des Empfangs einer Antwort gestartet, danach stoppt der Server,
-erlaubt es nicht, Ressourcen und Socket offen zu halten.
+> Get-DeepLX "Получить выбор" en -Alternatives
+Get a choice
+Get the choice
+Get your choice
 ```
 
 ### Remote server
