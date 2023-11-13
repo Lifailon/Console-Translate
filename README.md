@@ -32,6 +32,26 @@ Example install to Ubuntu: **apt install pwsh**
 
 Install module:
 
+```
+pwsh
+Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/Deploy-Console-Translate.ps1")
+Import-Mod
+```
+
+```PowerShell
+lifailon@netbox-01:~$ pwsh
+PowerShell 7.3.9
+PS /home/lifailon> Import-Module Console-Translate
+PS /home/lifailon> Get-Command -Module Console-Translate
+
+CommandType     Name                 Version    Source
+-----------     ----                 -------    ------
+Function        Get-DeepLX           0.1        Console-Translate
+Function        Get-Translate        0.1        Console-Translate
+Function        Start-DeepLX         0.1        Console-Translate
+Function        Stop-DeepLX          0.1        Console-Translate
+```
+
 ## Example use API
 
 To translate using Google Translate, a **public API key** has been added to the module (default for the **parameter: -Key**). To use your DeepL key, you must register on the **[provider website](https://www.deepl.com/ru/pro-api?cta=header-pro-api)**, create free token and specify it in the **parameter: -Key**.
