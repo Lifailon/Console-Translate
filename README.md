@@ -1,6 +1,6 @@
 # Console-Translate
 
-PowerShell module for translating text directly in the console using api and DeepLX
+PowerShell module for translating text directly in the console using Google/DeepL api and DeepLX
 
 To translate using Google Translate, a **public API key** has been added to the module (default for the **-Key parameter**). To use your DeepL key, you must register on the **provider website** and create a token.
 
@@ -10,9 +10,11 @@ Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubus
 
 ## Example
 
+```PowerShell
 Get-Translate game ru
 Get-Translate -Text "I like to play games" -Language ru
 Get-Translate -Text "I like to play games" -Language ru -Provider DeepL
+```
 
 ## psDeepLX
 
@@ -26,12 +28,18 @@ Get-DeepLX
 
 ### Local server
 
-Get-DeepLX -Text "I like to play games" ru
+When calling the module, if the remote server address parameter is not specified, the **local server is started for the time of sending a request and receiving a response**, after which the server stops, it allows not to keep resources and socket open.
 
+```PowerShell
+> Get-DeepLX -Text "I like to play games" ru
+Я люблю играть в игры
+```
 
 ### Remote server
 
+```PowerShell
 Start-DeepLX -Job
 Get-DeepLX -Server 192.168.3.99 -Text "I like to play games" ru
 Stop-DeepLX
 Start-DeepLX -Status
+```
