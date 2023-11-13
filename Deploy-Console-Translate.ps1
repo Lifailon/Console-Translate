@@ -1,5 +1,9 @@
 ### Install/Update Module
-$path = ($env:PSModulePath.Split(";")[0])+"\Console-Translate\"
+if ($IsLinux) {
+    $path = ($env:PSModulePath.Split(":")[0])+"/Console-Translate"
+} else {
+    $path = ($env:PSModulePath.Split(";")[0])+"\Console-Translate"
+}
 $psd = "$path\Console-Translate.psd1"
 $psm = "$path\Console-Translate.psm1"
 if (Test-Path $path) {
@@ -12,10 +16,19 @@ $psm_url = "https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/Con
 (New-Object Net.WebClient).DownloadString($psd_url) | Out-File $psd -Encoding default -Force
 (New-Object Net.WebClient).DownloadString($psm_url) | Out-File $psm -Encoding default -Force
 ### Install/Update DeepLX
-$Path_DeepLX = "$path\deeplx.exe"
-$Releases_Latest = Invoke-RestMethod "https://api.github.com/repos/OwO-Network/DeepLX/releases/latest"
-[uri]$url = ($Releases_Latest.assets | Where-Object Name -Match "amd64.exe").browser_download_url
-if (Test-Path $Path_DeepLX) {
+if ($IsLinux) {
+    $Path_DeepLX = "$path/deeplx"
+    $Releases_Latest = Invoke-RestMethod "https://api.github.com/repos/OwO-Network/DeepLX/releases/latest"
+    [string]$url = $($Releases_Latest.assets | Where-Object Name -Match "linux_amd64").browser_download_url
+} else {
+    $Path_DeepLX = "$path\deeplx.exe"
+    $Releases_Latest = Invoke-RestMethod "https://api.github.com/repos/OwO-Network/DeepLX/releases/latest"
+    [string]$url = ($Releases_Latest.assets | Where-Object Name -Match "amd64.exe").browser_download_url
+}
+    if (Test-Path $Path_DeepLX) {
     Remove-Item $Path_DeepLX
 }
 Invoke-RestMethod -Uri $url -OutFile $Path_DeepLX
+if ($IsLinux) {
+    chmod +x $Path_DeepLX
+}
