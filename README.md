@@ -34,8 +34,7 @@ Example install to Ubuntu: **apt install pwsh**
 Install module:
 
 ```
-pwsh
-Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/Deploy-Console-Translate.ps1")
+pwsh -c 'Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/Deploy-Console-Translate.ps1")'
 ```
 
 ```PowerShell
