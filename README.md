@@ -22,6 +22,15 @@ Function        Start-DeepLX         0.1        Console-Translate
 Function        Stop-DeepLX          0.1        Console-Translate
 ```
 
+## 🐧 Linux
+
+Dependence: **[PowerShell Core](https://github.com/PowerShell/PowerShell)**
+
+Example install to Ubuntu: \
+**apt install pwsh**
+
+Install module:
+
 ## Example use API
 
 To translate using Google Translate, a **public API key** has been added to the module (default for the **parameter: -Key**). To use your DeepL key, you must register on the **[provider website](https://www.deepl.com/ru/pro-api?cta=header-pro-api)**, create free token and specify it in the **parameter: -Key**.
@@ -36,7 +45,7 @@ To translate using Google Translate, a **public API key** has been added to the 
 Я люблю играть в игры
 ```
 
-## psDeepLX
+## DeepLX
 
 Source: **[DeepLX](https://github.com/OwO-Network/DeepLX)**
 
@@ -61,7 +70,7 @@ When calling the module, if the remote server address is not specified (**parame
 
 If you need to use a single server to handle all requests from multiple clients on the network, you can use this construct:
 
-Start the server:
+**📭 Start the server:**
 
 ```PowerShell
 > Start-DeepLX -Job
@@ -69,14 +78,14 @@ Start the server:
 Running
 ```
 
-Execute a requests to the remote server:
+**✉️ Execute a requests to the remote server:**
 
 ```PowerShell
 > Get-DeepLX -Server 192.168.3.99 -Text "I like to play games" ru
 Я люблю играть в игры
 ```
 
-Server stop:
+**Server stop:**
 
 ```PowerShell
 > Stop-DeepLX
