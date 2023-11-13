@@ -109,6 +109,11 @@ When calling the module, if the remote server address is not specified (**parame
 > Get-DeepLX -Text "Я люблю играть в игры" en
 I like to play games
 
+> Get-DeepLX "Сделать выбор" en -Alternatives
+To make a choice
+Make a choice.
+Make your choice
+
 > Get-DeepLX -Text "When calling the module, if the remote server address is not specified (parameter: -Server), 
 the local server is started for the time of sending a request and receiving a response, after which the server stops, 
 it allows not to keep resources and socket open." ru
