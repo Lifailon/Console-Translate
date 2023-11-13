@@ -40,12 +40,14 @@ SYNTAX
 
 DESCRIPTION
     Example:
-    Get-Translate game ru
-    Get-Translate -Text "I like to play games" -LanguageTarget ru
-    Get-Translate -Text "I like to play games" -LanguageTarget ru -Provider DeepL
+    Get-Translate -Text "Module for text translation" ru
+    Get-Translate -Text "Модуль для перевода текста" en
+    Get-Translate -Text "Модуль для перевода текста" -LanguageTarget en -LanguageSource ru
+    $Token = "YOUR_TOKEN"
+    Get-Translate -Text "Module for text translation" -LanguageTarget ru -Provider DeepL -Key $Token
 
 RELATED LINKS
-    https://github.com/Lifailon/Console-Translate```
+    https://github.com/Lifailon/Console-Translate
 ```
 
 ### 🐧 Use to Linux
@@ -73,17 +75,15 @@ PS /home/lifailon> Import-Module Console-Translate
 To translate using Google Translate, a **public API key** has been added to the module (default for the **parameter: -Key**). To use your DeepL key, you must register on the **[provider website](https://www.deepl.com/ru/pro-api?cta=header-pro-api)**, create free token and specify it in the **parameter: -Key**.
 
 ```PowerShell
-> Get-Translate game ru
-игра
-> Get-Translate -Text "I like to play games" ru
-Я люблю играть в игры
-> Get-Translate -Text "Я люблю играть в игры" en
-I love to play games
-> Get-Translate -Text "Я люблю играть в игры" -LanguageTarget en -LanguageSource ru
-I love to play games
+> Get-Translate -Text "Module for text translation" ru
+Модуль для перевода текста
+> Get-Translate -Text "Модуль для перевода текста" en
+Text translation module
+> Get-Translate -Text "Модуль для перевода текста" -LanguageTarget en -LanguageSource ru
+Text translation module
 > $Token = "YOUR_TOKEN"
-> Get-Translate -Text "I like to play games" -LanguageTarget ru -Provider DeepL -Key $Token
-Я люблю играть в игры
+> Get-Translate -Text "Module for text translation" -LanguageTarget ru -Provider DeepL -Key $Token
+Модуль для перевода текста
 ```
 
 ## DeepLX
@@ -133,8 +133,8 @@ Running
 **✉️ Execute a requests to the remote server:**
 
 ```PowerShell
-> Get-DeepLX -Server 192.168.3.99 -Text "I like to play games" ru
-Я люблю играть в игры
+> Get-DeepLX -Server 192.168.3.99 -Text "Module for text translation" ru
+Модуль для перевода текста
 ```
 
 **Server stop:**
