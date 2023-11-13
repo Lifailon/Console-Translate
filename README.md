@@ -4,6 +4,8 @@ PowerShell module for translating text directly in the console using Google/Deep
 
 The work of the **module is automated and free of charge**, no additional intervention in the work of the module is required from you.
 
+Tested on Windows 10, Ubuntu Server 20.04 and 22.04 using PowerShell Core version 7.3.9.
+
 ## 🚀 Install module
 
 For fast install or update module and dependences (DeepLX) from GutHub repository, use the Deploy script with a single cmdlet in your PowerShell console:
