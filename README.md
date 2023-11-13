@@ -1,22 +1,44 @@
 # Console-Translate
 
-PowerShell module for translating text directly in the console using Google/DeepL api and DeepLX
+PowerShell module for translating text directly in the console using Google/DeepL api and DeepLX.
 
-To translate using Google Translate, a **public API key** has been added to the module (default for the **-Key parameter**). To use your DeepL key, you must register on the **provider website** and create a token.
+The work of the **module is automated and free of charge**, no additional intervention in the work of the module is required from you.
 
-## 🚀 Install module and dependences (DeepLX)
+## 🚀 Install module
 
-Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/Deploy-Console-Translate.ps1")
-
-## Example
+For fast install or update module and dependences (DeepLX) from GutHub repository, use the Deploy script with a single cmdlet in your PowerShell console:
 
 ```PowerShell
-Get-Translate game ru
-Get-Translate -Text "I like to play games" -Language ru
-Get-Translate -Text "I like to play games" -Language ru -Provider DeepL
+> Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/Deploy-Console-Translate.ps1")
+
+> Import-Module Console-Translate
+> Get-Command -Module Console-Translate
+
+CommandType     Name                 Version    Source
+-----------     ----                 -------    ------
+Function        Get-DeepLX           0.1        Console-Translate
+Function        Get-Translate        0.1        Console-Translate
+Function        Start-DeepLX         0.1        Console-Translate
+Function        Stop-DeepLX          0.1        Console-Translate
 ```
 
-## psDeepLX
+## Example use API
+
+To translate using Google Translate, a **public API key** has been added to the module (default for the **parameter: -Key**). To use your DeepL key, you must register on the **[provider website](https://www.deepl.com/ru/pro-api?cta=header-pro-api)**, create free token and specify it in the **parameter: -Key**.
+
+```PowerShell
+> Get-Translate game ru
+игра
+> Get-Translate -Text "I like to play games" -Language ru
+Я люблю играть в игры
+> $Token = "YOUR_TOKEN"
+> Get-Translate -Text "I like to play games" -Language ru -Provider DeepL -Key $Token
+Я люблю играть в игры
+```
+
+## psDeepLX (PowerShell DeepLX)
+
+Source: **[DeepLX](https://github.com/OwO-Network/DeepLX)**
 
 The following cmdlets are used to start and access the **DeepLX server**:
 
@@ -37,9 +59,17 @@ When calling the module, if the remote server address parameter is not specified
 
 ### Remote server
 
+If you want to use a single server for multiple clients on your network, you can use this construct:
+
 ```PowerShell
-Start-DeepLX -Job
-Get-DeepLX -Server 192.168.3.99 -Text "I like to play games" ru
-Stop-DeepLX
-Start-DeepLX -Status
+> Start-DeepLX -Job
+> Start-DeepLX -Status
+Running
+
+> Get-DeepLX -Server 192.168.3.99 -Text "I like to play games" ru
+Я люблю играть в игры
+
+> Stop-DeepLX
+> Start-DeepLX -Status
+Not running
 ```
