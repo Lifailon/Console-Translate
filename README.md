@@ -97,8 +97,11 @@ Get-DeepLX
 When calling the module, if the remote server address is not specified (**parameter: -Server**), the **local server is started for the time of sending a request and receiving a response**, after which the server stops, it allows not to keep resources and socket open.
 
 ```PowerShell
-> Get-DeepLX -Text "I like to play games" ru
-Я люблю играть в игры
+> Get-DeepLX -Text "When calling the module, if the remote server address is not specified (parameter: -Server), the local server is started for the time of sending a request and receiving a response, after which the server stops, it allows not to keep resources and socket open." ru
+При вызове модуля, если не указан адрес удаленного сервера (параметр: -Server), запускается локальный сервер на время отправки запроса и получения ответа, после чего сервер останавливается, это позволяет не держать ресурсы и сокет открытым.
+
+> Get-DeepLX -Text "When calling the module, if the remote server address is not specified (parameter: -Server), the local server is started for the time of sending a request and receiving a response, after which the server stops, it allows not to keep resources and socket open." de
+Wenn beim Aufruf des Moduls die Adresse des entfernten Servers nicht angegeben wird (Parameter: -Server), wird der lokale Server für die Zeit des Sendens einer Anfrage und des Empfangs einer Antwort gestartet, danach stoppt der Server, er erlaubt es nicht, Ressourcen und Socket offen zu halten.
 ```
 
 ### Remote server
@@ -127,3 +130,10 @@ Running
 > Start-DeepLX -Status
 Not running
 ```
+
+## Module not using API
+
+You can use a module that dont use an API, instead using Selenium to compose requests directly to the application:
+
+[Selenium-Modules](https://github.com/Lifailon/Selenium-Modules)
+[Get-Translate](https://github.com/Lifailon/Selenium-Modules/blob/rsa/Modules/Get-Translate.psm1)
