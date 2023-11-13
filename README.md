@@ -36,7 +36,7 @@ To translate using Google Translate, a **public API key** has been added to the 
 Я люблю играть в игры
 ```
 
-## psDeepLX (PowerShell DeepLX)
+## psDeepLX
 
 Source: **[DeepLX](https://github.com/OwO-Network/DeepLX)**
 
@@ -50,7 +50,7 @@ Get-DeepLX
 
 ### Local server
 
-When calling the module, if the remote server address parameter is not specified, the **local server is started for the time of sending a request and receiving a response**, after which the server stops, it allows not to keep resources and socket open.
+When calling the module, if the remote server address is not specified (**parameter: -Server**), the **local server is started for the time of sending a request and receiving a response**, after which the server stops, it allows not to keep resources and socket open.
 
 ```PowerShell
 > Get-DeepLX -Text "I like to play games" ru
@@ -59,16 +59,26 @@ When calling the module, if the remote server address parameter is not specified
 
 ### Remote server
 
-If you want to use a single server for multiple clients on your network, you can use this construct:
+If you need to use a single server to handle all requests from multiple clients on the network, you can use this construct:
+
+Start the server:
 
 ```PowerShell
 > Start-DeepLX -Job
 > Start-DeepLX -Status
 Running
+```
 
+Execute a requests to the remote server:
+
+```PowerShell
 > Get-DeepLX -Server 192.168.3.99 -Text "I like to play games" ru
 Я люблю играть в игры
+```
 
+Server stop:
+
+```PowerShell
 > Stop-DeepLX
 > Start-DeepLX -Status
 Not running
