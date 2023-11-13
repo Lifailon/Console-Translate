@@ -22,12 +22,11 @@ Function        Start-DeepLX         0.1        Console-Translate
 Function        Stop-DeepLX          0.1        Console-Translate
 ```
 
-## 🐧 Linux
+### 🐧 Linux
 
 Dependence: **[PowerShell Core](https://github.com/PowerShell/PowerShell)**
 
-Example install to Ubuntu: \
-**apt install pwsh**
+Example install to Ubuntu: **apt install pwsh**
 
 Install module:
 
