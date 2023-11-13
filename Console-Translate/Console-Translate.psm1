@@ -69,7 +69,7 @@ function Start-DeepLX {
     https://github.com/OwO-Network/DeepLX
     #>
     param (
-        [string]$Path = "$home\Documents\deeplx.exe",
+        [string]$Path = ($env:PSModulePath.Split(";")[0])+"\Console-Translate\deeplx.exe",
         [string]$Token = "XXXXXXXXXX",
         [int]$Port = 1188,
         [switch]$Job,
