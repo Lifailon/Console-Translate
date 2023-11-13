@@ -8,7 +8,7 @@ Tested on Windows 10, Ubuntu Server 20.04 and 22.04 using PowerShell Core versio
 
 ## 🚀 Install module
 
-For fast install or update module and dependences (DeepLX) from GutHub repository, use the Deploy script with a single cmdlet in your PowerShell console:
+For fast install or update module and dependences (binary file DeepLX) latest version from GutHub repository, use the Deploy script with a single cmdlet in your PowerShell console:
 
 ```
 Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/Deploy-Console-Translate.ps1")
@@ -90,7 +90,7 @@ Text translation module
 
 ## DeepLX
 
-Binary project source: **[DeepLX](https://github.com/OwO-Network/DeepLX)**
+Project source: **[DeepLX](https://github.com/OwO-Network/DeepLX)**
 
 The following cmdlets are used to start and access the **DeepLX server**:
 
