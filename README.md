@@ -14,6 +14,15 @@ Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubus
 
 ```PowerShell
 > Import-Module Console-Translate
+> Get-Command -Module Console-Translate
+
+CommandType     Name                 Version    Source
+-----------     ----                 -------    ------
+Function        Get-DeepLX           0.1        Console-Translate
+Function        Get-Translate        0.1        Console-Translate
+Function        Start-DeepLX         0.1        Console-Translate
+Function        Stop-DeepLX          0.1        Console-Translate
+
 ```
 
 ### 🐧 Linux
@@ -27,21 +36,12 @@ Install module:
 ```
 pwsh
 Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/Deploy-Console-Translate.ps1")
-Import-Mod
 ```
 
 ```PowerShell
 lifailon@netbox-01:~$ pwsh
 PowerShell 7.3.9
 PS /home/lifailon> Import-Module Console-Translate
-PS /home/lifailon> Get-Command -Module Console-Translate
-
-CommandType     Name                 Version    Source
------------     ----                 -------    ------
-Function        Get-DeepLX           0.1        Console-Translate
-Function        Get-Translate        0.1        Console-Translate
-Function        Start-DeepLX         0.1        Console-Translate
-Function        Stop-DeepLX          0.1        Console-Translate
 ```
 
 ## Example use API
