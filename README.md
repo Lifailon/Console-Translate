@@ -77,6 +77,8 @@ To translate using Google Translate, a **public API key** has been added to the 
 игра
 > Get-Translate -Text "I like to play games" ru
 Я люблю играть в игры
+> Get-Translate -Text "Я люблю играть в игры" en
+I love to play games
 > Get-Translate -Text "Я люблю играть в игры" -LanguageTarget en -LanguageSource ru
 I love to play games
 > $Token = "YOUR_TOKEN"
