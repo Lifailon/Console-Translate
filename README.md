@@ -12,7 +12,7 @@ For fast install or update module and dependences (DeepLX) from GutHub repositor
 Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/Deploy-Console-Translate.ps1")
 ```
 
-Import module for detailed information:
+Import module for detailed information (syntax):
 
 ```PowerShell
 > Import-Module Console-Translate
@@ -34,13 +34,13 @@ SYNOPSIS
     Text translation using Google and DeepL providers via REST API
 
 SYNTAX
-    Get-Translate [-Text] <String[]> [[-Language] <String>] [[-Provider] <String>] [[-Key] <String>] [<CommonParameters>]
+    Get-Translate [-Text] <String[]> [[-LanguageTarget] <String>] [[-LanguageSource] <String>] [[-Provider] <String>] [[-Key] <String>] [<CommonParameters>]
 
 DESCRIPTION
     Example:
     Get-Translate game ru
-    Get-Translate -Text "I like to play games" -Language ru
-    Get-Translate -Text "I like to play games" -Language ru -Provider DeepL
+    Get-Translate -Text "I like to play games" -LanguageTarget ru
+    Get-Translate -Text "I like to play games" -LanguageTarget ru -Provider DeepL
 
 RELATED LINKS
     https://github.com/Lifailon/Console-Translate```
@@ -73,10 +73,12 @@ To translate using Google Translate, a **public API key** has been added to the 
 ```PowerShell
 > Get-Translate game ru
 игра
-> Get-Translate -Text "I like to play games" -Language ru
+> Get-Translate -Text "I like to play games" ru
 Я люблю играть в игры
+> Get-Translate -Text "Я люблю играть в игры" -LanguageTarget en -LanguageSource ru
+I love to play games
 > $Token = "YOUR_TOKEN"
-> Get-Translate -Text "I like to play games" -Language ru -Provider DeepL -Key $Token
+> Get-Translate -Text "I like to play games" -LanguageTarget ru -Provider DeepL -Key $Token
 Я люблю играть в игры
 ```
 
@@ -97,6 +99,12 @@ Get-DeepLX
 When calling the module, if the remote server address is not specified (**parameter: -Server**), the **local server is started for the time of sending a request and receiving a response**, after which the server stops, it allows not to keep resources and socket open.
 
 ```PowerShell
+> Get-DeepLX -Text "I like to play games" ru
+Я люблю играть в игры
+
+> Get-DeepLX -Text "Я люблю играть в игры" en
+I like to play games
+
 > Get-DeepLX -Text "When calling the module, if the remote server address is not specified (parameter: -Server), 
 the local server is started for the time of sending a request and receiving a response, after which the server stops, 
 it allows not to keep resources and socket open." ru
