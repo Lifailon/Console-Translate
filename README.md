@@ -70,6 +70,8 @@ PowerShell 7.3.9
 PS /home/lifailon> Import-Module Console-Translate
 ```
 
+All commands for Windows are identical for execution in Linux on PowerShell Core (pwsh).
+
 ## Example use API
 
 To translate using Google Translate, a **public API key** has been added to the module (default for the **parameter: -Key**). To use your DeepL key, you must register on the **[provider website](https://www.deepl.com/ru/pro-api?cta=header-pro-api)**, create free token and specify it in the **parameter: -Key**.
@@ -88,7 +90,7 @@ Text translation module
 
 ## DeepLX
 
-Source: **[DeepLX](https://github.com/OwO-Network/DeepLX)**
+Binary project source: **[DeepLX](https://github.com/OwO-Network/DeepLX)**
 
 The following cmdlets are used to start and access the **DeepLX server**:
 
