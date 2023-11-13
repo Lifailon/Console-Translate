@@ -12,6 +12,8 @@ For fast install or update module and dependences (DeepLX) from GutHub repositor
 Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/Deploy-Console-Translate.ps1")
 ```
 
+Import module for detailed information:
+
 ```PowerShell
 > Import-Module Console-Translate
 > Get-Command -Module Console-Translate
@@ -23,9 +25,28 @@ Function        Get-Translate        0.1        Console-Translate
 Function        Start-DeepLX         0.1        Console-Translate
 Function        Stop-DeepLX          0.1        Console-Translate
 
+> Get-Help Get-Translate
+
+NAME
+    Get-Translate
+
+SYNOPSIS
+    Text translation using Google and DeepL providers via REST API
+
+SYNTAX
+    Get-Translate [-Text] <String[]> [[-Language] <String>] [[-Provider] <String>] [[-Key] <String>] [<CommonParameters>]
+
+DESCRIPTION
+    Example:
+    Get-Translate game ru
+    Get-Translate -Text "I like to play games" -Language ru
+    Get-Translate -Text "I like to play games" -Language ru -Provider DeepL
+
+RELATED LINKS
+    https://github.com/Lifailon/Console-Translate```
 ```
 
-### 🐧 Linux
+### 🐧 Use to Linux
 
 Dependence: **[PowerShell Core](https://github.com/PowerShell/PowerShell)**
 
@@ -36,6 +57,8 @@ Install module:
 ```
 pwsh -c 'Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/Deploy-Console-Translate.ps1")'
 ```
+
+Enter in to the PowerShell Core interpreter (**pwsh**) and import the module:
 
 ```PowerShell
 lifailon@netbox-01:~$ pwsh
