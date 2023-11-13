@@ -133,7 +133,8 @@ Not running
 
 ## Module not using API
 
-You can use a module that dont use an API, instead using Selenium to compose requests directly to the application:
+You can use a module that dont use an API, instead **using Selenium** to compose requests directly to the application:
 
-[Selenium-Modules](https://github.com/Lifailon/Selenium-Modules)
-[Get-Translate](https://github.com/Lifailon/Selenium-Modules/blob/rsa/Modules/Get-Translate.psm1)
+Repository: **[Selenium-Modules](https://github.com/Lifailon/Selenium-Modules)**
+
+Module: **[Get-Translate](https://github.com/Lifailon/Selenium-Modules/blob/rsa/Modules/Get-Translate.psm1)**
