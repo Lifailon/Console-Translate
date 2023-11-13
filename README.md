@@ -14,14 +14,6 @@ Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubus
 
 ```PowerShell
 > Import-Module Console-Translate
-> Get-Command -Module Console-Translate
-
-CommandType     Name                 Version    Source
------------     ----                 -------    ------
-Function        Get-DeepLX           0.1        Console-Translate
-Function        Get-Translate        0.1        Console-Translate
-Function        Start-DeepLX         0.1        Console-Translate
-Function        Stop-DeepLX          0.1        Console-Translate
 ```
 
 ### 🐧 Linux
