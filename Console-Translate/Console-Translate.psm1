@@ -4,11 +4,11 @@ function Get-Translate {
     Text translation using Google and DeepL providers via REST API
     .DESCRIPTION
     Example:
-    Get-Translate game ru
-    Get-Translate -Text "I like to play games" ru
-    Get-Translate -Text "Я люблю играть в игры" -LanguageTarget en -LanguageSource ru
+    Get-Translate -Text "Module for text translation" ru
+    Get-Translate -Text "Модуль для перевода текста" en
+    Get-Translate -Text "Модуль для перевода текста" -LanguageTarget en -LanguageSource ru
     $Token = "YOUR_TOKEN"
-    Get-Translate -Text "I like to play games" -LanguageTarget ru -Provider DeepL -Key $Token
+    Get-Translate -Text "Module for text translation" -LanguageTarget ru -Provider DeepL -Key $Token
     .LINK
     https://github.com/Lifailon/Console-Translate
     #>
@@ -119,11 +119,13 @@ function Get-DeepLX {
     For a local request, the server is started for the duration of the get response
     .DESCRIPTION
     Example use local server:
-    Get-DeepLX -Text "I like to play games" ru
-    Get-DeepLX -Text "Я люблю играть в игры" en ru
+    Get-DeepLX "Get select" de
+    Get-DeepLX "Get select" ru
+    Get-DeepLX "Получить выбор" en
+    Get-DeepLX "Получить выбор" en -Alternatives
     Example use remote server:
-    Get-DeepLX -Server 192.168.3.99 -Text "I like to play games" ru
-    Get-DeepLX -Server 192.168.3.99 -Text "I like to play games" -LanguageTarget ru -Key "1111111111" -Port 1181
+    Get-DeepLX -Server 192.168.3.99 -Text "Module for text translation" ru
+    Get-DeepLX -Server 192.168.3.99 -Text "Module for text translation" -LanguageTarget ru -Key "1111111111" -Port 1181
     .LINK
     https://github.com/Lifailon/Console-Translate
     https://github.com/OwO-Network/DeepLX
@@ -132,6 +134,7 @@ function Get-DeepLX {
         [Parameter(Mandatory,ValueFromPipeline)][string[]]$Text,
         [string]$LanguageTarget = "RU",
         [string]$LanguageSource,
+        [switch]$Alternatives,
         [string]$Key = "7777777777",
         [string]$Server,
         [int]$Port = 1188
@@ -161,7 +164,11 @@ function Get-DeepLX {
         $WebClient.Headers.Add($key, $Header[$key])
     }
     $Response = $WebClient.UploadString($url, "POST", $Body) | ConvertFrom-Json
-    $Response.data
+    if ($Alternatives) {
+        $Response.alternatives
+    } else {
+        $Response.data
+    }
     if ($Server_Running -eq "True") {
         Stop-DeepLX
     }
