@@ -69,12 +69,16 @@ function Start-DeepLX {
     https://github.com/OwO-Network/DeepLX
     #>
     param (
-        [string]$Path = ($env:PSModulePath.Split(";")[0])+"\Console-Translate\deeplx.exe",
         [string]$Token = "XXXXXXXXXX",
         [int]$Port = 1188,
         [switch]$Job,
         [switch]$Status
     )
+    if ($IsLinux) {
+        [string]$path = ($env:PSModulePath.Split(":")[0])+"/Console-Translate/deeplx"
+    } else {
+        [string]$Path = ($env:PSModulePath.Split(";")[0])+"\Console-Translate\deeplx.exe"
+    }
     if ($Status) {
         $Job_State = Get-Job | Where-Object Name -Like "DeepLX"
         if ($Job_State) {
