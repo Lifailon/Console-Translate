@@ -8,9 +8,11 @@ The work of the **module is automated and free of charge**, no additional interv
 
 For fast install or update module and dependences (DeepLX) from GutHub repository, use the Deploy script with a single cmdlet in your PowerShell console:
 
-```PowerShell
-> Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/Deploy-Console-Translate.ps1")
+```
+Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/Deploy-Console-Translate.ps1")
+```
 
+```PowerShell
 > Import-Module Console-Translate
 > Get-Command -Module Console-Translate
 
