@@ -6,6 +6,8 @@ The work of the **module is automated and free of charge**, no additional interv
 
 Tested on Windows 10, Ubuntu Server 20.04 and 22.04 using PowerShell Core version 7.3.9.
 
+![Image alt](https://github.com/Lifailon/Console-Translate/blob/rsa/Example.gif)
+
 ## 🚀 Install module
 
 For fast install or update module and dependences (binary file DeepLX) latest version from GutHub repository, use the Deploy script with a single cmdlet in your PowerShell console:
