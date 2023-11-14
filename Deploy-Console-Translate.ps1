@@ -31,4 +31,7 @@ if ($IsLinux) {
 Invoke-RestMethod -Uri $url -OutFile $Path_DeepLX
 if ($IsLinux) {
     chmod +x $Path_DeepLX
+} else {
+"`nNew-Alias -Name gt -Value Get-Translate -Force" >> $PROFILE
+"`nNew-Alias -Name gd -Value Get-DeepLX -Force" >> $PROFILE
 }
