@@ -5,7 +5,7 @@
     CompanyName       = "Open Source Community"
     Copyright         = "Apache-2.0"
     Description       = "PowerShell module for translating text directly in the console using api and DeepLX"
-    PowerShellVersion = "7.3"
+    PowerShellVersion = "7.2"
     PrivateData       = @{
         PSData = @{
             Tags         = @("Translate","Google","DeepL")
