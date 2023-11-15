@@ -8,6 +8,8 @@ Tested on Windows 10, Ubuntu Server 20.04 and 22.04 using PowerShell Core versio
 
 ![Image alt](https://github.com/Lifailon/Console-Translate/blob/rsa/Example.gif)
 
+You can see in the right corner how long each translation request takes (this does not depend on the amount of text being transferred).
+
 ## 🚀 Install module
 
 For fast install or update module and dependences (binary file DeepLX) latest version from GutHub repository, use the Deploy script with a single cmdlet in your PowerShell console:
