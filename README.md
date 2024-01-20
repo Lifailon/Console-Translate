@@ -58,7 +58,15 @@ RELATED LINKS
 
 Dependence: **[PowerShell Core](https://github.com/PowerShell/PowerShell)**
 
-Example install to Ubuntu: **apt install pwsh**
+Example install to Ubuntu:
+
+```Bash
+sudo apt-get install -y wget apt-transport-https software-properties-common
+curl -s https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb -o packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo apt-get update
+sudo apt-get install -y powershell
+```
 
 Install module:
 
