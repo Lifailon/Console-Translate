@@ -16,8 +16,8 @@ $Files_GitHub = Invoke-RestMethod -Uri $url
 foreach ($File_GitHub in $Files_GitHub) {
     $File_Name = $File_GitHub.name
     $Url_Download = $File_GitHub.download_url
-    (New-Object Net.WebClient).DownloadString($Url_Download) | Out-File "$Module_Path\$File_Name" -Encoding default -Force
-
+    #(New-Object Net.WebClient).DownloadString($Url_Download) | Out-File "$Module_Path\$File_Name" -Encoding default -Force
+    Invoke-RestMethod -Uri $Url_Download -OutFile "$Module_Path\$File_Name"
 }
 ### Install/Update DeepLX
 if ($IsLinux) {
@@ -29,8 +29,8 @@ if ($IsLinux) {
     $DeepLX_Releases_Latest = Invoke-RestMethod "https://api.github.com/repos/OwO-Network/DeepLX/releases/latest"
     [string]$DeepLX_Download_url = ($DeepLX_Releases_Latest.assets | Where-Object Name -Match "amd64.exe").browser_download_url
 }
-#Invoke-RestMethod -Uri $DeepLX_Download_url -OutFile $DeepLX_Path
-(New-Object Net.WebClient).DownloadString($DeepLX_Download_url) | Out-File $DeepLX_Path -Encoding default -Force
+#(New-Object Net.WebClient).DownloadString($DeepLX_Download_url) | Out-File $DeepLX_Path -Encoding default -Force
+Invoke-RestMethod -Uri $DeepLX_Download_url -OutFile $DeepLX_Path
 if ($IsLinux) {
     chmod +x $DeepLX_Path
 } else {
