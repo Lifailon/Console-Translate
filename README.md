@@ -110,6 +110,11 @@ Metin çeviri modülü
 
 > Get-Translate -Provider MyMemory -Text "MyMemory is the world's largest Translation Memory. It has been created collecting TMs from the European Union and United Nations, and aligning the best domain-specific multilingual websites."
 MyMemory - крупнейшая в мире память переводов. Он был создан для сбора ТМ из Европейского Союза и Организации Объединенных Наций и согласования лучших многоязычных веб-сайтов, ориентированных на конкретные области.
+
+> Get-Translate -Provider MyMemory -Text "Hello World" -Alternatives
+Здравствуйте
+Привет мир!
+Всем привет!
 ```
 
 ### DeepLX
@@ -176,6 +181,8 @@ Not running
 Getting language codes standart [ISO-639-1](https://ru.wikipedia.org/wiki/ISO_639-1):
 
 ```PowerShell
+> Get-LanguageCode
+
 Country                                             Code
 -------                                             ----
 Abkhaz                                              ab
