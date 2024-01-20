@@ -12,10 +12,6 @@ Used providers:
 
 Tested on Windows 10, Ubuntu Server 20.04 and 22.04 using PowerShell Core version 7.2 +.
 
-![Image alt](https://github.com/Lifailon/Console-Translate/blob/rsa/Example.gif)
-
-You can see in the right corner how long each translation request takes (this does not depend on the amount of text being transferred).
-
 - [🚀 Install module to Windows](#-install-module-to-windows)
 - [🐧 Install module to Linux](#-install-module-to-linux)
 - [🎉 Examples](#-examples)
@@ -76,6 +72,12 @@ PS /home/lifailon> Import-Module Console-Translate
 All commands for Windows are identical for execution in Linux on PowerShell Core (pwsh).
 
 ## 🎉 Examples
+
+![Image alt](https://github.com/Lifailon/Console-Translate/blob/rsa/Example.gif)
+
+You can see in the right corner how long each translation request takes (this does not depend on the amount of text being transferred).
+
+### Module Get-Translate
 
 To translate using Google Translate, a **public API key** has been added to the module (default for the **parameter: -Key**). To use your DeepL key, you must register on the **[provider website](https://www.deepl.com/ru/pro-api?cta=header-pro-api)**, create free token and specify it in the **parameter: -Key**.
 
@@ -162,7 +164,7 @@ Running
 Not running
 ```
 
-# 📑 Getting language codes
+## 📑 Getting language codes
 
 Getting language codes standart [ISO-639-1](https://ru.wikipedia.org/wiki/ISO_639-1):
 
