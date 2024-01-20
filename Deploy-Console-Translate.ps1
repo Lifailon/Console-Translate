@@ -29,8 +29,8 @@ if ($IsLinux) {
     $DeepLX_Releases_Latest = Invoke-RestMethod "https://api.github.com/repos/OwO-Network/DeepLX/releases/latest"
     [string]$DeepLX_Download_url = ($DeepLX_Releases_Latest.assets | Where-Object Name -Match "amd64.exe").browser_download_url
 }
+#Invoke-RestMethod -Uri $DeepLX_Download_url -OutFile $DeepLX_Path
 (New-Object Net.WebClient).DownloadString($DeepLX_Download_url) | Out-File $DeepLX_Path -Encoding default -Force
-Invoke-RestMethod -Uri $url -OutFile $DeepLX_Path
 if ($IsLinux) {
     chmod +x $DeepLX_Path
 } else {
