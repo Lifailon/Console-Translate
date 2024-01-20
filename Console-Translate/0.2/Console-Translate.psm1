@@ -5,8 +5,7 @@ function Get-LanguageCode {
 function Get-Translate {
     <#
     .SYNOPSIS
-    Text translation using Google (public API key added to the default parameter),
-    DeepL and MyMemory (API key not required) providers via REST API
+    Text translation using Google (public API key added to the default parameter), DeepL and MyMemory (API key not required) providers via REST API
     .DESCRIPTION
     Example:
     Get-Translate "Module for text translation"
