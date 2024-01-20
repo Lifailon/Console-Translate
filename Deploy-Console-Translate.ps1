@@ -9,7 +9,6 @@ if (Test-Path $path) {
 }
 $GitHub_Tag = (Invoke-RestMethod "https://api.github.com/repos/Lifailon/Console-Translate/releases/latest").tag_name
 $Module_Version = $GitHub_Tag -replace ".+-"
-$Module_Version = "0.2"
 $Module_Path = "$path\$Module_Version"
 New-Item -Path $Module_Path  -Force -ItemType Directory
 $url = "https://api.github.com/repos/Lifailon/Console-Translate/contents/Console-Translate/$Module_Version"

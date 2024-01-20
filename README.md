@@ -1,6 +1,17 @@
 # Console-Translate
 
-PowerShell module for translating text directly in the console PowerShell. 
+PowerShell module for translating text directly in the console PowerShell.
+
+- [💡 About](#-about)
+- [🚀 Install module to Windows](#-install-module-to-windows)
+- [🐧 Install module to Linux](#-install-module-to-linux)
+- [🎉 Examples](#-examples)
+- [📑 Getting language codes](#-getting-language-codes)
+- [📢 Module not using API](#-module-not-using-api)
+
+## 💡 About
+
+The module can be very useful if you spend a lot of time in the console or don't want to keep a third-party application open.
 
 Used providers:
 
@@ -8,15 +19,11 @@ Used providers:
 - **[DeepL](https://www.deepl.com/ru/docs-api)**  (required [API token](https://www.deepl.com/ru/pro-api?cta=header-pro-api)) and **[DeepLX](https://github.com/OwO-Network/DeepLX)** (free API, no token required);
 - **[MyMemory](https://mymemory.translated.net/doc/spec.php)** (API key not required).
 
-> 💡 The work of the **module is automated and free of charge**, no additional intervention in the work of the module is required from you.
+The work of the **module is automated and free of charge**, no additional intervention in the work of the module is required from you.
+
+The process of language definition for the LanguageSource and LanguageTarget parameters is automated between **Russian and English**. This process can be automated for all languages.
 
 Tested on Windows 10, Ubuntu Server 20.04 and 22.04 using PowerShell Core version 7.2 +.
-
-- [🚀 Install module to Windows](#-install-module-to-windows)
-- [🐧 Install module to Linux](#-install-module-to-linux)
-- [🎉 Examples](#-examples)
-- [📑 Getting language codes](#-getting-language-codes)
-- [📢 Module not using API](#-module-not-using-api)
 
 ## 🚀 Install module to Windows
 
