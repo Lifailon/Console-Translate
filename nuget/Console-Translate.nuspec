@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Console-Translate</id>
+    <version>0.2.2</version>
+    <authors>Lifailon</authors>
+    <owners>Lifailon</owners>
+    <description>Cross-platform client for translating text in the console, uses API Google (edded public free token), MyMemory and DeepLX (no token required)</description>
+    <tags>PowerShell, Module, Translate, api</tags>
+    <contentFiles>
+      <files include="Console-Translate.psm1" buildAction="Content" />
+      <files include="Console-Translate.psd1" buildAction="Content" />
+      <files include="lang-iso-639-1.csv" buildAction="Content" />
+      <files include="README.md" buildAction="Content" />
+      <files include="LICENSE" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+</package>

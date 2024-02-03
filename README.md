@@ -16,8 +16,8 @@ The module can be very useful if you spend a lot of time in the console or don't
 Used providers:
 
 - **[Google](https://cloud.google.com/translate/docs/reference/api-overview)** (public API key added to the default parameter);
-- **[DeepL](https://www.deepl.com/ru/docs-api)**  (required [API token](https://www.deepl.com/ru/pro-api?cta=header-pro-api)) and **[DeepLX](https://github.com/OwO-Network/DeepLX)** (free API, no token required);
-- **[MyMemory](https://mymemory.translated.net/doc/spec.php)** (API key not required).
+- **[MyMemory](https://mymemory.translated.net/doc/spec.php)** (API key not required);
+- **[DeepL](https://www.deepl.com/ru/docs-api)**  (required [API token](https://www.deepl.com/ru/pro-api?cta=header-pro-api)) and **[DeepLX](https://github.com/OwO-Network/DeepLX)** (free API, no token required)
 
 The work of the **module is automated and free of charge**, no additional intervention in the work of the module is required from you.
 
@@ -27,13 +27,25 @@ Tested on Windows 10, Ubuntu Server 20.04 and 22.04 using PowerShell Core versio
 
 ## 🚀 Install module to Windows
 
-For fast install or update module and dependences (binary file DeepLX) latest version from GutHub repository, use the Deploy script with a single cmdlet in your PowerShell console:
+Use the [NuGet](https://www.nuget.org/packages/Console-Translate) package manager:
+
+```PowerShell
+Install-Module Console-Translate -Repository NuGet
+```
+
+💡 You must have a NuGet repository registered:
+
+```PowerShell
+Register-PSRepository -Name "NuGet" -SourceLocation "https://www.nuget.org/api/v2" -InstallationPolicy Trusted
+```
+
+Or install a module from the GitHub repository (including dependencies, DeepLX binary) with a single command in the console:
 
 ```
 Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/Deploy-Console-Translate.ps1")
 ```
 
-Import module for detailed information (syntax):
+Import the module:
 
 ```PowerShell
 > Import-Module Console-Translate
