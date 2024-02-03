@@ -1,4 +1,4 @@
-# Console-Translate
+# <img src="https://github.com/Lifailon/Console-Translate/blob/rsa/ico/x128.png" width="25" /> Console-Translate
 
 PowerShell module for translating text directly in the console PowerShell.
 
@@ -80,7 +80,7 @@ All commands for Windows are identical for execution in Linux on PowerShell Core
 
 ## 🎉 Examples
 
-![Image alt](https://github.com/Lifailon/Console-Translate/blob/rsa/Example.gif)
+![Image alt](https://github.com/Lifailon/Console-Translate/blob/rsa/image/Example.gif)
 
 You can see in the right corner how long each translation request takes (this does not depend on the amount of text being transferred).
 
