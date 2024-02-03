@@ -2,11 +2,12 @@
 <package >
   <metadata>
     <id>Console-Translate</id>
-    <version>0.2.2</version>
+    <version>0.2.3</version>
     <authors>Lifailon</authors>
     <owners>Lifailon</owners>
     <description>Cross-platform client for translating text in the console, uses API Google (edded public free token), MyMemory and DeepLX (no token required)</description>
-    <tags>PowerShell, Module, Translate, api</tags>
+    <tags>PowerShell, Module, Translate, api, Google-Translate, MyMemory, Deepl, DeeplX</tags>
+    <projectUrl>https://github.com/Lifailon/Console-Translate</projectUrl>
     <contentFiles>
       <files include="Console-Translate.psm1" buildAction="Content" />
       <files include="Console-Translate.psd1" buildAction="Content" />
