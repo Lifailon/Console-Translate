@@ -1,9 +1,9 @@
 # <img src="https://github.com/Lifailon/Console-Translate/blob/rsa/ico/x128.png" width="25" /> Console-Translate
 
-![GitHub top language](https://img.shields.io/github/languages/top/Lifailon/Console-Translate?logo=PowerShell)
-![NuGet Downloads](https://img.shields.io/nuget/dt/Console-Translate?logo=nuget&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FConsole-Translate)
-![GitHub release (with filter)](https://img.shields.io/github/v/release/lifailon/Console-Translate?color=<green>)
-![GitHub License](https://img.shields.io/github/license/lifailon/Console-Translate?color=blue)
+![GitHub Release](https://img.shields.io/github/v/release/Lifailon/Console-Translate?display_name=release&logo=GitHub&label=GitHub&link=https%3A%2F%2Fgithub.com%2FLifailon%2FConsole-Translate%2F)
+![NuGet Version](https://img.shields.io/nuget/v/Console-Translate?logo=NuGet&label=NuGet&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FConsole-Translate)
+![GitHub top language](https://img.shields.io/github/languages/top/Lifailon/Console-Translate?logo=PowerShell&link=https%3A%2F%2Fgithub.com%2FPowerShell%2FPowerShell)
+![GitHub License](https://img.shields.io/github/license/Lifailon/Console-Translate?link=https%3A%2F%2Fgithub.com%2FLifailon%2FConsole-Translate%2Fblob%2Frsa%2FLICENSE)
 
 PowerShell module for translating text directly in the console PowerShell.
 
