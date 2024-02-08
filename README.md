@@ -1,7 +1,7 @@
 # <img src="https://github.com/Lifailon/Console-Translate/blob/rsa/ico/x128.png" width="25" /> Console-Translate
 
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/lifailon/Console-Translate?color=<green>)
-![NuGet download](https://img.shields.io/nuget/dt/Console-Translate?logo=nuget&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FConsole-Translate)
+![NuGet Downloads](https://img.shields.io/nuget/dt/Console-Translate?logo=nuget&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FConsole-Translate)
 ![GitHub top language](https://img.shields.io/github/languages/top/lifailon/Console-Translate)
 ![GitHub License](https://img.shields.io/github/license/lifailon/Console-Translate?color=<green>)
 
