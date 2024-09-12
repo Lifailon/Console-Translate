@@ -5,6 +5,8 @@
 [![GitHub top language](https://img.shields.io/github/languages/top/Lifailon/Console-Translate?logo=PowerShell&link=https%3A%2F%2Fgithub.com%2FPowerShell%2FPowerShell)](https://github.com/PowerShell/PowerShell)
 [![GitHub License](https://img.shields.io/github/license/Lifailon/Console-Translate?link=https%3A%2F%2Fgithub.com%2FLifailon%2FConsole-Translate%2Fblob%2Frsa%2FLICENSE)](https://github.com/Lifailon/Console-Translate/blob/rsa/LICENSE)
 
+> ⚠ This module is not planned to be supported. Try it cross-platform [TUI for translating](https://github.com/Lifailon/multranslate) text using multiple providers simultaneously.
+
 PowerShell module for translating text directly in the console PowerShell.
 
 - [💡 About](#-about)
