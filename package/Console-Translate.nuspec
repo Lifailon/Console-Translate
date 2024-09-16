@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Console-Translate</id>
+    <version>0.3.1</version>
+    <authors>Lifailon</authors>
+    <owners>Lifailon</owners>
+    <description>PowerShell module (cross-platform cli client) for free text translation using Google, DeepL, MyMemory and Reverso providers via REST API</description>
+    <tags>PowerShell, Module, Translate, Translator, Google, DeepL, DeepLX, MyMemory, Reverso, api, cli</tags>
+    <projectUrl>https://github.com/Lifailon/Console-Translate</projectUrl>
+    <contentFiles>
+      <files include="Console-Translate.psm1" buildAction="Content" />
+      <files include="Console-Translate.psd1" buildAction="Content" />
+      <files include="README.md" buildAction="Content" />
+      <files include="LICENSE" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+</package>

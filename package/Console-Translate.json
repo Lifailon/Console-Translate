@@ -1,0 +1,12 @@
+{
+  "version": "0.3.0",
+  "description": "PowerShell module (cross-platform cli client) for free text translation using Google (public serverless on Vercel), DeepLX (public serverless on Vercel), MyMemory and Reverso providers via REST API (no token required).",
+  "homepage": "https://github.com/Lifailon/Console-Translate",
+  "license": "MIT",
+  "url": "https://github.com/Lifailon/Console-Translate/archive/refs/heads/rsa.zip",
+  "extract_dir": "Console-Translate",
+  "bin": "Console-Translate.psm1",
+  "psmodule": {
+    "name": "Console-Translate"
+  }
+}
