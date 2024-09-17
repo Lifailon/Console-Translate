@@ -1,77 +1,89 @@
-# <img src="https://github.com/Lifailon/Console-Translate/blob/rsa/ico/x128.png" width="25" /> Console-Translate
+<h1 align="center">
+    <img src="image/x256.png" width="35" /> Console-Translate
+<h2>
 
-[![GitHub Release](https://img.shields.io/github/v/release/Lifailon/Console-Translate?display_name=release&logo=GitHub&label=GitHub&link=https%3A%2F%2Fgithub.com%2FLifailon%2FConsole-Translate%2F)](https://github.com/Lifailon/Console-Translate)
-[![NuGet Version](https://img.shields.io/nuget/v/Console-Translate?logo=NuGet&label=NuGet&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FConsole-Translate)](https://www.nuget.org/packages/Console-Translate)
-[![GitHub top language](https://img.shields.io/github/languages/top/Lifailon/Console-Translate?logo=PowerShell&link=https%3A%2F%2Fgithub.com%2FPowerShell%2FPowerShell)](https://github.com/PowerShell/PowerShell)
-[![GitHub License](https://img.shields.io/github/license/Lifailon/Console-Translate?link=https%3A%2F%2Fgithub.com%2FLifailon%2FConsole-Translate%2Fblob%2Frsa%2FLICENSE)](https://github.com/Lifailon/Console-Translate/blob/rsa/LICENSE)
+<p align="center">
+    <a href="https://nuget.org/packages/Console-Translate"><img title="NuGet Version"src="https://img.shields.io/nuget/v/Console-Translate?logo=NuGet&label=NuGet&color=blue&logoColor=blue"></a>
+    <a href="https://www.myget.org/feed/lifailon/package/nuget/Console-Translate"><img title="MyGet Version"src="https://img.shields.io/myget/lifailon/v/Console-Translate?logo=MyGet&label=MyGet&color=white&logoColor=white"></a>
+</p>
 
-> ⚠ This module is not planned to be supported. Try it cross-platform [TUI for translating](https://github.com/Lifailon/multranslate) text using multiple providers simultaneously.
+<h3 align="center">
+    ⚠ This module is not planned to be supported.
+    <br>
+    Try it cross-platform <a href="https://github.com/Lifailon/multranslate" target="_blank">TUI for translating text</a> using multiple providers simultaneously. 
+</h3>
 
-PowerShell module for translating text directly in the console PowerShell.
+PowerShell module (cross-platform cli client) for **free text translation** using [Google](https://github.com/matheuss/google-translate-api) (public [serverless](https://github.com/olavoparno/translate-serverless-vercel) on Vercel), [DeepLX](https://github.com/OwO-Network/DeepLX) (public [serverless](https://github.com/LegendLeo/deeplx-serverless) on [Vercel](https://github.com/bropines/Deeplx-vercel)), [MyMemory](https://mymemory.translated.net/doc/spec.php) and [Reverso](https://www.reverso.net/text-translation) providers via `REST API` (no token required).
 
 - [💡 About](#-about)
 - [🚀 Install module to Windows](#-install-module-to-windows)
 - [🐧 Install module to Linux](#-install-module-to-linux)
 - [🎉 Examples](#-examples)
-- [📑 Getting language codes](#-getting-language-codes)
+- [🔨 DeepLX](#-deeplx)
 - [📢 Module not using API](#-module-not-using-api)
 
 ## 💡 About
 
-The module can be very useful if you spend a lot of time in the console or don't want to keep a third-party application open.
-
-Used providers:
-
-- **[Google](https://cloud.google.com/translate/docs/reference/api-overview)** (public API key added to the default parameter);
-- **[MyMemory](https://mymemory.translated.net/doc/spec.php)** (API key not required);
-- **[DeepL](https://www.deepl.com/ru/docs-api)**  (required [API token](https://www.deepl.com/ru/pro-api?cta=header-pro-api)) and **[DeepLX](https://github.com/OwO-Network/DeepLX)** (free API, no token required)
+The module can be very useful if you spend a lot of time in the console or do not want to use a browser or third-party applications to translate text.
 
 The work of the **module is automated and free of charge**, no additional intervention in the work of the module is required from you.
 
-The process of language definition for the LanguageSource and LanguageTarget parameters is automated between **Russian and English**. This process can be automated for all languages.
+The process of determining the language for the `LanguageSource` and `LanguageTarget` parameters is automated between **Russian and English**. This process can be automated for any language.
 
-Tested on Windows 10, Ubuntu Server 20.04 and 22.04 using PowerShell Core version 7.2 +.
+This module also automates the process of launching the DeepLX server for local or remote use on other machines (e.g. those without Internet access).
+
+Tested on Windows 10/11 and Ubuntu Server 20.04+ using PowerShell Core version 7.2 +.
+
+---
 
 ## 🚀 Install module to Windows
 
-Use the [NuGet](https://www.nuget.org/packages/Console-Translate) package manager:
-
-```PowerShell
-Install-Module Console-Translate -Repository NuGet
-```
-
-💡 You must have a NuGet repository registered:
+- Use the [NuGet](https://www.nuget.org/packages/Console-Translate) package manager (pre-register the repository if you haven't already):
 
 ```PowerShell
 Register-PSRepository -Name "NuGet" -SourceLocation "https://www.nuget.org/api/v2" -InstallationPolicy Trusted
+Install-Module Console-Translate -Repository NuGet
 ```
 
-Or install a module from the GitHub repository (including dependencies, DeepLX binary) with a single command in the console:
+- Use the [MyGet](https://www.myget.org/feed/lifailon/package/nuget/Console-Translate) package manager:
 
+```PowerShell
+Register-PSRepository -Name "lifailon" -SourceLocation "https://www.myget.org/F/lifailon/api/v2" -InstallationPolicy Trusted
+Install-Module Console-Translate -Repository lifailon
 ```
+
+- Use the [Chocolatey](https://community.chocolatey.org/packages/Console-Translate) package manager:
+
+```PowerShell
+choco install console-translate
+```
+
+- Install a module from the GitHub repository with a single command in the console:
+
+```PowerShell
 Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/Deploy-Console-Translate.ps1")
 ```
 
 Import the module:
 
 ```PowerShell
-> Import-Module Console-Translate
-> Get-Command -Module Console-Translate
+Import-Module Console-Translate
+Get-Command -Module Console-Translate
 
-CommandType     Name                  Version    Source
------------     ----                  -------    ------
-Function        Get-DeepLX            0.2        Console-Translate
-Function        Get-LanguageCode      0.2        Console-Translate
-Function        Get-Translate         0.2        Console-Translate
-Function        Start-DeepLX          0.2        Console-Translate
-Function        Stop-DeepLX           0.2        Console-Translate
+CommandType     Name                 Version    Source
+-----------     ----                 -------    ------
+Function        Get-Translate        0.3        Console-Translate
+Function        Install-DeepLX       0.3        Console-Translate
+Function        Start-DeepLX         0.3        Console-Translate
+Function        Stop-DeepLX          0.3        Console-Translate
+Function        Get-DeepLX           0.3        Console-Translate
 ```
 
 ## 🐧 Install module to Linux
 
-Dependence: **[PowerShell Core](https://github.com/PowerShell/PowerShell)**
+💡 Dependence: [PowerShell Core](https://github.com/PowerShell/PowerShell)
 
-Example install to Ubuntu:
+- Example install PowerShell to Ubuntu:
 
 ```Bash
 sudo apt-get install -y wget apt-transport-https software-properties-common
@@ -81,64 +93,60 @@ sudo apt-get update
 sudo apt-get install -y powershell
 ```
 
-Install module:
+- Install module:
 
-```
+```shell
 pwsh -c 'Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/Deploy-Console-Translate.ps1")'
 ```
 
-Enter in to the PowerShell Core interpreter (**pwsh**) and import the module:
+Run the PowerShell interpreter using the `pwsh` command. All commands for Windows are identical for execution in Linux on PowerShell Core (pwsh).
 
-```PowerShell
-root@hv-devops-01:/home/lifailon# pwsh
-PowerShell 7.4.1
-PS /home/lifailon> Import-Module Console-Translate
-```
-
-All commands for Windows are identical for execution in Linux on PowerShell Core (pwsh).
+---
 
 ## 🎉 Examples
 
-![Image alt](https://github.com/Lifailon/Console-Translate/blob/rsa/image/Example.gif)
+![Example](image/Example.gif)
+
+> The example uses the first release (version 0.1) of the module.
 
 You can see in the right corner how long each translation request takes (this does not depend on the amount of text being transferred).
 
-### Module Get-Translate
-
-To translate using Google Translate, a **public API key** has been added to the module (default for the **parameter: -Key**). To use your DeepL key, you must register on the **[provider website](https://www.deepl.com/ru/pro-api?cta=header-pro-api)**, create free token and specify it in the **parameter: -Key**.
-
 ```PowerShell
-> Get-Translate "Module for text translation"
+Get-Translate "Module for text translation" -Provider Google
 Модуль для перевода текста
 
-> Get-Translate "Модуль для перевода текста"
+Get-Translate "Модуль для перевода текста"
 Text translation module
 
-> Get-Translate "Привет world" -LanguageSelected
-Language Source: RU
-Language Target: EN
-Hello world
-
-> Get-Translate "Hello друг" -LanguageSelected
+Get-Translate "Hello друг" -LanguageSelected
 Language Source: EN
 Language Target: RU
 Привет друг
 
-> Get-Translate -Text "Модуль для перевода текста" -LanguageSource ru -LanguageTarget tr # Russian -> Turkish
-Metin çeviri modülü
+Get-Translate "Привет world" -LanguageSelected
+Language Source: RU
+Language Target: EN
+Hello world
 
-> Get-Translate -Provider MyMemory -Text "MyMemory is the world's largest Translation Memory. It has been created collecting TMs from the European Union and United Nations, and aligning the best domain-specific multilingual websites."
-MyMemory - крупнейшая в мире память переводов. Он был создан для сбора ТМ из Европейского Союза и Организации Объединенных Наций и согласования лучших многоязычных веб-сайтов, ориентированных на конкретные области.
+Get-Translate "Module for text translation" -Provider DeepL
+Модуль для перевода текста
 
-> Get-Translate -Provider MyMemory -Text "Hello World" -Alternatives
-Здравствуйте
-Привет мир!
-Всем привет!
+Get-Translate "Module for text translation" -Provider MyMemory
+Модуль для перевода текста
+Текстовый перевод.
+Перевод текста БД
+
+Get-Translate "Module for text translation" -Provider Reverso
+Модуль перевода текстов
 ```
 
-### DeepLX
+## 🔨 DeepLX
 
-Project source: **[DeepLX](https://github.com/OwO-Network/DeepLX)**
+Install or update the [DeepLX](https://github.com/OwO-Network/DeepLX) server executable for local or remote use with a single command (for Windows and Linux):
+
+```PowerShell
+Install-DeepLX
+```
 
 The following cmdlets are used to start and access the **DeepLX server**:
 
@@ -153,19 +161,25 @@ Get-DeepLX
 When calling the module, if the remote server address is not specified (**parameter: Server**), the **local server is started for the time of sending a request and receiving a response**, after which the server stops, it allows not to keep resources and socket open.
 
 ```PowerShell
-> Get-DeepLX "Get select" de
-Auswahl treffen
-
-> Get-DeepLX "Get select" ru
-Получить выбор
-
-> Get-DeepLX "Получить выбор" en
-Get Choice
-
-> Get-DeepLX "Получить выбор" en -Alternatives
+Get-DeepLX "Получить выбор"
 Get a choice
 Get the choice
 Get your choice
+
+Get-DeepLX "Get select" ru
+Выбрать
+Выберите
+Получите выбор
+
+Get-DeepLX "Get select" ja # from English to Japanese
+セレクトする
+セレクト
+選択
+
+Get-DeepLX "Get select" tr # from English to Turkish
+Seçim yapın
+Seçiniz
+Seçin
 ```
 
 ### Remote server
@@ -175,224 +189,87 @@ If you need to use a single server to handle all requests from multiple clients 
 **📭 Start the server:**
 
 ```PowerShell
-> Start-DeepLX -Job
-> Start-DeepLX -Status
+Start-DeepLX -Job
+Start-DeepLX -Status
 Running
 ```
+
+The default port is `1188` and the api key is `7777777777`.
 
 **✉️ Execute a requests to the remote server:**
 
 ```PowerShell
-> Get-DeepLX -Server 192.168.3.99 -Text "Module for text translation" ru
-Модуль для перевода текста
+Get-DeepLX -Text "Получить выбор" -Server 192.168.3.100
+Получить выбор
+
+Get-DeepLX -Text "Get select" -Server 192.168.3.100 -Port 1188 -Key "7777777777"
+Получить выбор
 ```
 
 **Server stop:**
 
 ```PowerShell
-> Stop-DeepLX
-> Start-DeepLX -Status
+Stop-DeepLX
+Start-DeepLX -Status
 Not running
 ```
 
-## 📑 Getting language codes
+---
 
-Getting language codes standart [ISO-639-1](https://ru.wikipedia.org/wiki/ISO_639-1):
+## Windows Terminal
 
-```PowerShell
-> Get-LanguageCode
+To speed up the process of interacting with the module, program hotkeys in [Windows Terminal](https://github.com/microsoft/terminal):
 
-Country                                             Code
--------                                             ----
-Abkhaz                                              ab
-Afar                                                aa
-Afrikaans                                           af
-Akan                                                ak
-Albanian                                            sq
-Amharic                                             am
-Arabic                                              ar
-Aragonese                                           an
-Armenian                                            hy
-Assamese                                            as
-Avaric                                              av
-Avestan                                             ae
-Aymara                                              ay
-Azerbaijani                                         az
-Bambara                                             bm
-Bashkir                                             ba
-Basque                                              eu
-Belarusian                                          be
-Bengali, Bangla                                     bn
-Bihari                                              bh
-Bislama                                             bi
-Bosnian                                             bs
-Breton                                              br
-Bulgarian                                           bg
-Burmese                                             my
-Catalan                                             ca
-Chamorro                                            ch
-Chechen                                             ce
-Chichewa, Chewa, Nyanja                             ny
-Chinese                                             zh
-Chuvash                                             cv
-Cornish                                             kw
-Corsican                                            co
-Cree                                                cr
-Croatian                                            hr
-Czech                                               cs
-Danish                                              da
-Divehi, Dhivehi, Maldivian                          dv
-Dutch                                               nl
-Dzongkha                                            dz
-Eastern Punjabi, Eastern Panjabi                    pa
-English                                             en
-Esperanto                                           eo
-Estonian                                            et
-Ewe                                                 ee
-Faroese                                             fo
-Fijian                                              fj
-Finnish                                             fi
-French                                              fr
-Fula, Fulah, Pulaar, Pular                          ff
-Galician                                            gl
-Ganda                                               lg
-Georgian                                            ka
-German                                              de
-Greek                                               el
-Guarani                                             gn
-Gujarati                                            gu
-Haitian, Haitian Creole                             ht
-Hausa                                               ha
-Hebrew                                              he
-Herero                                              hz
-Hindi                                               hi
-Hiri Motu                                           ho
-Hungarian                                           hu
-Icelandic                                           is
-Ido                                                 io
-Igbo                                                ig
-Indonesian                                          id
-Interlingua                                         ia
-Interlingue                                         ie
-Inuktitut                                           iu
-Inupiaq                                             ik
-Irish                                               ga
-Italian                                             it
-Japanese                                            ja
-Javanese                                            jv
-Kalaallisut, Greenlandic                            kl
-Kannada                                             kn
-Kanuri                                              kr
-Kashmiri                                            ks
-Kazakh                                              kk
-Khmer                                               km
-Kikuyu, Gikuyu                                      ki
-Kinyarwanda                                         rw
-Kirundi                                             rn
-Komi                                                kv
-Kongo                                               kg
-Korean                                              ko
-Kurdish                                             ku
-Kwanyama, Kuanyama                                  kj
-Kyrgyz                                              ky
-Lao                                                 lo
-Latin                                               la
-Latvian                                             lv
-Limburgish, Limburgan, Limburger                    li
-Lingala                                             ln
-Lithuanian                                          lt
-Luba-Katanga                                        lu
-Luxembourgish, Letzeburgesch                        lb
-Macedonian                                          mk
-Malagasy                                            mg
-Malay                                               ms
-Malayalam                                           ml
-Maltese                                             mt
-Manx                                                gv
-Marathi                                             mr
-Marshallese                                         mh
-Mongolian                                           mn
-Maori                                               mi
-Nauruan                                             na
-Navajo, Navaho                                      nv
-Ndonga                                              ng
-Nepali                                              ne
-Northern Ndebele                                    nd
-Northern Sami                                       se
-Norwegian                                           no
-Norwegian Bokmal                                    nb
-Norwegian Nynorsk                                   nn
-Nuosu                                               ii
-Occitan                                             oc
-Ojibwe, Ojibwa                                      oj
-Old Church Slavonic, Church Slavonic, Old Bulgarian cu
-Oriya                                               or
-Oromo                                               om
-Ossetian, Ossetic                                   os
-Pashto, Pushto                                      ps
-Persian                                             fa
-Polish                                              pl
-Portuguese                                          pt
-Pali                                                pi
-Quechua                                             qu
-Romanian                                            ro
-Romansh                                             rm
-Russian                                             ru
-Samoan                                              sm
-Sango                                               sg
-Sanskrit                                            sa
-Sardinian                                           sc
-Scottish Gaelic, Gaelic                             gd
-Serbian                                             sr
-Shona                                               sn
-Sindhi                                              sd
-Sinhalese, Sinhala                                  si
-Slovak                                              sk
-Slovene                                             sl
-Somali                                              so
-Southern Ndebele                                    nr
-Southern Sotho                                      st
-Spanish                                             es
-Sundanese                                           su
-Swahili                                             sw
-Swati                                               ss
-Swedish                                             sv
-Tagalog                                             tl
-Tahitian                                            ty
-Tajik                                               tg
-Tamil                                               ta
-Tatar                                               tt
-Telugu                                              te
-Thai                                                th
-Tibetan Standard, Tibetan, Central                  bo
-Tigrinya                                            ti
-Tonga                                               to
-Tsonga                                              ts
-Tswana                                              tn
-Turkish                                             tr
-Turkmen                                             tk
-Twi                                                 tw
-Ukrainian                                           uk
-Urdu                                                ur
-Uyghur                                              ug
-Uzbek                                               uz
-Venda                                               ve
-Vietnamese                                          vi
-Volapuk                                             vo
-Walloon                                             wa
-Welsh                                               cy
-Western Frisian                                     fy
-Western Frisian                                     wo
-Xhosa                                               xh
-Yiddish                                             yi
-Yoruba                                              yo
-Zhuang, Chuang                                      za
-Zulu                                                zu
+Open the `JSON configuration file` in Application Settings and add or edit the `Actions` block:
+
+```json
+"actions": 
+    [
+        {
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "keys": "ctrl+c" // default: ctrl+shift+c
+        },
+        {
+            "command": "paste",
+            // We save the classic interpreter insertion via ctrl+v, without forcing you to execute the code line by line
+            "keys": "ctrl+shift+v" // default: ctrl+v
+        },
+        {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u0001\u001b[3~Get-Translate -Provider Google ''\u001b[D"
+            },
+            "keys": "ctrl+g"
+        },
+        {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u0001\u001b[3~Get-Translate -Provider Google -Text $(Get-Clipboard)\u001b[D\r"
+            },
+            "keys": "ctrl+shift+g"
+        }
+    ]
 ```
+
+The first two command blocks are responsible for redefining the copy and paste keys from the clipboard (use `Ctrl+C` and `Ctrl+V` as in the classic PowerShell terminal, getting rid of intrusive warnings about pasting text and line-by-line execution of commands).
+
+The third parameter is responsible for processing the `Ctrl+G` key press, which preliminarily clears the input line, after which it causes the text to be inserted: `Get-Translate -Provider Google ''` and moves the cursor to the center of the quotation marks, which allows you to enter text and call translation immediately after pressing . The last command does the same thing, but pastes text from the clipboard (using the built-in `Get-Clipboard` command) and calls execution to instantly translate the text when you press `Ctrl+Shift+G`.
+
+> Similarly, you can assign the translation call for DeepL, MyMemory and Reverso to other key combinations.
+
+---
 
 ## 📢 Module not using API
 
-You can use a module that dont use an API, instead **using Selenium** to compose requests directly to the application:
+You can use a module that dont use an API, instead **using Selenium via .NET to PowerShell** for compose requests directly to the application:
+
+Automated deployment and updating of all dependencies: Deploy Selenium: [Deploy-Selenium](https://github.com/Lifailon/Deploy-Selenium)
 
 Repository: **[Selenium-Modules](https://github.com/Lifailon/Selenium-Modules)**
 
