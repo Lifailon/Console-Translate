@@ -16,7 +16,7 @@
 
 ---
 
-PowerShell module (cross-platform cli client) for **free text translation** using [Google](https://github.com/matheuss/google-translate-api) (public [serverless](https://github.com/olavoparno/translate-serverless-vercel) on Vercel), [DeepLX](https://github.com/OwO-Network/DeepLX) (public [serverless](https://github.com/LegendLeo/deeplx-serverless) on [Vercel](https://github.com/bropines/Deeplx-vercel)), [MyMemory](https://mymemory.translated.net/doc/spec.php) and [Reverso](https://www.reverso.net/text-translation) providers via `REST API` (no token required).
+PowerShell module for **free text translation** using [Google](https://github.com/matheuss/google-translate-api) (public [serverless](https://github.com/olavoparno/translate-serverless-vercel) on Vercel), [DeepLX](https://github.com/OwO-Network/DeepLX) (public [serverless](https://github.com/LegendLeo/deeplx-serverless) on [Vercel](https://github.com/bropines/Deeplx-vercel)), [MyMemory](https://mymemory.translated.net/doc/spec.php) and [Reverso](https://www.reverso.net/text-translation) providers via `REST API` (no token required).
 
 This module also automates the process of installing, updating, managing and working with the DeepLX server.
 
@@ -45,10 +45,15 @@ Tested on Windows 10/11 and Ubuntu Server 20.04+ using PowerShell Core version 7
 
 ### [NuGet](https://www.nuget.org/packages/Console-Translate)
 
-> Pre-register the repository, if you haven't already.
+- Pre-register the NuGet package manager if you have not done so previously:
 
 ```PowerShell
 Register-PSRepository -Name "NuGet" -SourceLocation "https://www.nuget.org/api/v2" -InstallationPolicy Trusted
+```
+
+- Install the module:
+
+```PowerShell
 Install-Module Console-Translate -Repository NuGet
 ```
 
@@ -85,10 +90,10 @@ scoop install Console-Translate
 - To remove module:
 
 ```PowerShell
-scoop uninstall Console-Translate && scoop Bucket rm Console-Translate
+scoop uninstall Console-Translate && scoop bucket rm Console-Translate
 ```
 
-### [GitHub](https://github.com/Lifailon/Console-Translate)
+### Deploy from GitHub
 
 Deployment a module from the GitHub repository with a single command in the console:
 
@@ -131,7 +136,7 @@ sudo apt-get install -y powershell
 pwsh -c 'Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/deploy-module.ps1")'
 ```
 
-Run the PowerShell interpreter using the `pwsh` command. All commands for Windows are identical for execution in Linux on PowerShell Core (pwsh).
+Run the PowerShell interpreter using the `pwsh` command. All commands for Windows are identical for execution in Linux by PowerShell Core.
 
 ---
 
@@ -213,7 +218,7 @@ Install or update the [DeepLX](https://github.com/OwO-Network/DeepLX) server exe
 Install-DeepLX
 ```
 
-When calling the module, if the remote server address is not specified (**parameter: Server**), the **local server is started for the time of sending a request and receiving a response**, after which the server stops, it allows not to keep resources and socket open.
+When calling the module, if the remote server address is not specified (**parameter: Server**), the **local server is started for the time of sending a request and receiving a response**, after which the server stops, it allows not to keep network socket open.
 
 ```PowerShell
 # Russian to English

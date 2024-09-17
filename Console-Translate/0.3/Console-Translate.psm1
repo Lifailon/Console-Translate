@@ -420,9 +420,9 @@ function Get-DeepLX {
     }
     $Response = $WebClient.UploadString($url, "POST", $Body) | ConvertFrom-Json
     # $Response = Invoke-RestMethod $url -Body $Body -Method POST -Headers $Header
-    # $Response.data
-    $Response.alternatives
     if ($Server_Running -eq "True") {
         Stop-DeepLX
     }
+    # $Response.data
+    return $Response.alternatives
 }
