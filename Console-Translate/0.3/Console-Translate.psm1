@@ -200,21 +200,22 @@ function Install-DeepLX {
     https://nuget.org/packages/Console-Translate
     https://github.com/OwO-Network/DeepLX
     #>
+    # if ($IsLinux) {
+    #     $path = ($env:PSModulePath.Split(":")[0])+"/Console-Translate"
+    # }
+    # else {
+    #     $path = ($env:PSModulePath.Split(";")[0])+"\Console-Translate"
+    # }
+    # $Module_Version = $(Get-ChildItem $path).Name
+    $Module_Path = Split-Path $(Get-Module Console-Translate).path
     if ($IsLinux) {
-        $path = ($env:PSModulePath.Split(":")[0])+"/Console-Translate"
-    }
-    else {
-        $path = ($env:PSModulePath.Split(";")[0])+"\Console-Translate"
-    }
-    $Module_Version = $(Get-ChildItem $path).Name
-    if ($IsLinux) {
-        $DeepLX_Path = "$path/$Module_Version/deeplx"
+        $DeepLX_Path = "$Module_Path/deeplx"
         $DeepLX_Releases_Latest = Invoke-RestMethod "https://api.github.com/repos/OwO-Network/DeepLX/releases/latest"
         [string]$DeepLX_Download_url = $($DeepLX_Releases_Latest.assets | Where-Object Name -Match "linux_amd64").browser_download_url
         chmod +x $DeepLX_Path
     }
     else {
-        $DeepLX_Path = "$path\$Module_Version\deeplx.exe"
+        $DeepLX_Path = "$Module_Path\deeplx.exe"
         $DeepLX_Releases_Latest = Invoke-RestMethod "https://api.github.com/repos/OwO-Network/DeepLX/releases/latest"
         [string]$DeepLX_Download_url = ($DeepLX_Releases_Latest.assets | Where-Object Name -Match "amd64.exe").browser_download_url
     }
@@ -243,10 +244,13 @@ function Start-DeepLX {
         [switch]$Status
     )
     if ($IsLinux) {
-        [string]$path = ($env:PSModulePath.Split(":")[0])+"/Console-Translate/*/deeplx"
+        [string]$path = "$(Split-Path $(Get-Module Console-Translate).path)/deeplx"
     }
     else {
-        [string]$Path = ($env:PSModulePath.Split(";")[0])+"\Console-Translate\*\deeplx.exe"
+        [string]$Path = "$(Split-Path $(Get-Module Console-Translate).path)\deeplx.exe"
+    }
+    if (Test-Path $path -eq $false) {
+        Install-DeepLX
     }
     if ($Status) {
         $Job_State = Get-Job | Where-Object Name -Like "DeepLX"
