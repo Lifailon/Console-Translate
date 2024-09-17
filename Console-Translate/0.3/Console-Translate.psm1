@@ -303,11 +303,13 @@ function Get-DeepLX {
         Get-DeepLX "Получить выбор"
         Get-DeepLX "Получить выбор" en
         Get-DeepLX "Get select" ru
-        Get-DeepLX "Get select" ja # from English to Japanese
-        Get-DeepLX "Get select" tr # from English to Turkish
+        Get-DeepLX "Get select" ja # English to Japanese
+        Get-DeepLX "セレクトする" ru # Japanese to Russian
+        Get-DeepLX "Get select" zh # English to Chinese
+        Get-DeepLX "Get select" tr # English to Turkish
     Example use remote server:
         Get-DeepLX -Text "Получить выбор" -Server 192.168.3.100
-        Get-DeepLX -Text "Get select" -Server 192.168.3.100 -Port 1188 -Key "7777777777"
+        Get-DeepLX -Text "Get select" -Server 192.168.3.100 -Port 1188 -Token "7777777777"
     .LINK
     https://github.com/Lifailon/Console-Translate
     https://nuget.org/packages/Console-Translate
@@ -381,9 +383,8 @@ function Get-DeepLX {
             "UK",
             "ZH"
         )][string]$LanguageSource,
-        [switch]$Alternatives,
-        [string]$Key = "7777777777",
         [string]$Server,
+        [string]$Token = "7777777777",
         [int]$Port = 1188
     )
     if ($Server) {
@@ -393,13 +394,13 @@ function Get-DeepLX {
         $Server_Running = "True"
         $Server = "localhost"
         Stop-DeepLX
-        Start-DeepLX -Token $Key -Port $Port -Job
+        Start-DeepLX -Token $Token -Port $Port -Job
     }
     $srv = $Server+":"+$Port
     $url = "http://$srv/translate"
     $Header = @{
         "Content-Type" = "application/json"
-        "Authorization" = "Bearer $Key"
+        "Authorization" = "Bearer $Token"
     }
     $Body = @{
         "text" = "$Text"
@@ -407,12 +408,12 @@ function Get-DeepLX {
         "source_lang" = "$LanguageSource"
     } | ConvertTo-Json
     $WebClient = New-Object System.Net.WebClient
-    foreach ($key in $Header.Keys) {
-        $WebClient.Headers.Add($key, $Header[$key])
+    foreach ($Token in $Header.Keys) {
+        $WebClient.Headers.Add($Token, $Header[$Token])
     }
     $Response = $WebClient.UploadString($url, "POST", $Body) | ConvertFrom-Json
-        #$Response.data
-        $Response.alternatives
+        # $Response.data
+        return $Response.alternatives
     if ($Server_Running -eq "True") {
         Stop-DeepLX
     }

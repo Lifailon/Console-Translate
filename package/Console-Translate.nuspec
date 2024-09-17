@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Console-Translate</id>
-    <version>0.3.1</version>
+    <version>0.3.2</version>
     <authors>Lifailon</authors>
     <owners>Lifailon</owners>
     <description>PowerShell module (cross-platform cli client) for free text translation using Google, DeepL, MyMemory and Reverso providers via REST API</description>

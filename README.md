@@ -7,11 +7,15 @@
     <a href="https://www.myget.org/feed/lifailon/package/nuget/Console-Translate"><img title="MyGet Version"src="https://img.shields.io/myget/lifailon/v/Console-Translate?logo=MyGet&label=MyGet&color=white&logoColor=white"></a>
 </p>
 
+---
+
 <h3 align="center">
     ⚠ This module is not planned to be supported.
     <br>
     Try it cross-platform <a href="https://github.com/Lifailon/multranslate" target="_blank">TUI for translating text</a> using multiple providers simultaneously. 
 </h3>
+
+---
 
 PowerShell module (cross-platform cli client) for **free text translation** using [Google](https://github.com/matheuss/google-translate-api) (public [serverless](https://github.com/olavoparno/translate-serverless-vercel) on Vercel), [DeepLX](https://github.com/OwO-Network/DeepLX) (public [serverless](https://github.com/LegendLeo/deeplx-serverless) on [Vercel](https://github.com/bropines/Deeplx-vercel)), [MyMemory](https://mymemory.translated.net/doc/spec.php) and [Reverso](https://www.reverso.net/text-translation) providers via `REST API` (no token required).
 
@@ -52,11 +56,13 @@ Register-PSRepository -Name "lifailon" -SourceLocation "https://www.myget.org/F/
 Install-Module Console-Translate -Repository lifailon
 ```
 
+<!--
 - Use the [Chocolatey](https://community.chocolatey.org/packages/Console-Translate) package manager:
 
 ```PowerShell
 choco install console-translate
 ```
+-->
 
 - Install a module from the GitHub repository with a single command in the console:
 
@@ -105,11 +111,7 @@ Run the PowerShell interpreter using the `pwsh` command. All commands for Window
 
 ## 🎉 Examples
 
-![Example](image/Example.gif)
-
-> The example uses the first release (version 0.1) of the module.
-
-You can see in the right corner how long each translation request takes (this does not depend on the amount of text being transferred).
+The parameters limit the use of this cmdlet to two languages: **English** (`en`) and **Russian** (`ru`), for which there is **automatic detection of the source language at the PowerShell code level**.
 
 ```PowerShell
 Get-Translate "Module for text translation" -Provider Google
@@ -156,27 +158,79 @@ Stop-DeepLX
 Get-DeepLX
 ```
 
+### Supported languages
+
+Supported languages from the drop-down list (encoded in the parameter) with support for **automatic language detection at the api level**.
+
+| Abbr | EN (RU)                        |
+| -    | -                              |
+| `EN` | English (Английский)           |
+| `RU` | Russian (Русский)              |
+| `JA` | Japanese (Японский)            |
+| `ZH` | Chinese (Китайский)            |
+| `KO` | Korean (Корейский)             |
+| `TR` | Turkish (Турецкий)             |
+| `UK` | Ukrainian (Украинский)         |
+| `SK` | Slovak (Словацкий)             |
+| `SL` | Slovenian (Словенский)         |
+| `LT` | Lithuanian (Литовский)         |
+| `PL` | Polish (Польский)              |
+| `CS` | Czech (Чешский)                |
+| `FI` | Finnish (Финский)              |
+| `ET` | Estonian (Эстонский)           |
+| `BG` | Bulgarian (Болгарский)         |
+| `DA` | Danish (Датский)               |
+| `LV` | Latvian (Латышский)            |
+| `IT` | Italian (Итальянский)          |
+| `ES` | Spanish (Испанский)            |
+| `FR` | French (Французский)           |
+| `PT` | Portuguese (Португальский)     |
+| `RO` | Romanian (Румынский)           |
+| `SV` | Swedish (Шведский)             |
+| `HU` | Hungarian (Венгерский)         |
+| `EL` | Greek (Греческий)              |
+| `NB` | Norwegian Bokmal (Норвежский)  |
+| `NL` | Dutch (Нидерландский)          |
+| `DE` | German (Немецкий)              |
+| `ID` | Indonesian (Индонезийский)     |
+| `AR` | Arabic (Арабский)              |
+
 ### Local server
 
 When calling the module, if the remote server address is not specified (**parameter: Server**), the **local server is started for the time of sending a request and receiving a response**, after which the server stops, it allows not to keep resources and socket open.
 
 ```PowerShell
+# Russian to English
 Get-DeepLX "Получить выбор"
 Get a choice
 Get the choice
 Get your choice
 
+# English to Russian
 Get-DeepLX "Get select" ru
 Выбрать
 Выберите
 Получите выбор
 
-Get-DeepLX "Get select" ja # from English to Japanese
+# English to Japanese
+Get-DeepLX "Get select" ja
 セレクトする
 セレクト
 選択
 
-Get-DeepLX "Get select" tr # from English to Turkish
+# Japanese to Russian
+Get-DeepLX "セレクトする" ru
+Выбирайте
+Выбрать
+
+# English to Chinese
+Get-DeepLX "Get select" zh
+获得选择
+选择
+进行选择
+
+# English to Turkish
+Get-DeepLX "Get select" tr
 Seçim yapın
 Seçiniz
 Seçin
@@ -202,7 +256,7 @@ The default port is `1188` and the api key is `7777777777`.
 Get-DeepLX -Text "Получить выбор" -Server 192.168.3.100
 Получить выбор
 
-Get-DeepLX -Text "Get select" -Server 192.168.3.100 -Port 1188 -Key "7777777777"
+Get-DeepLX -Text "Get select" -Server 192.168.3.100 -Port 1188 -Token "7777777777"
 Получить выбор
 ```
 
@@ -261,7 +315,7 @@ The first two command blocks are responsible for redefining the copy and paste k
 
 The third parameter is responsible for processing the `Ctrl+G` key press, which preliminarily clears the input line, after which it causes the text to be inserted: `Get-Translate -Provider Google ''` and moves the cursor to the center of the quotation marks, which allows you to enter text and call translation immediately after pressing . The last command does the same thing, but pastes text from the clipboard (using the built-in `Get-Clipboard` command) and calls execution to instantly translate the text when you press `Ctrl+Shift+G`.
 
-> Similarly, you can assign the translation call for DeepL, MyMemory and Reverso to other key combinations.
+> Similarly, you can assign the translation call for DeepL/DeepLX, MyMemory and Reverso to other key combinations.
 
 ---
 
