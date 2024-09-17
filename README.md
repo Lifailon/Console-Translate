@@ -7,7 +7,6 @@
     <a href="https://www.myget.org/feed/lifailon/package/nuget/Console-Translate"><img title="MyGet Version"src="https://img.shields.io/myget/lifailon/v/Console-Translate?logo=MyGet&label=MyGet&color=white&logoColor=white"></a>
 </p>
 
----
 
 <h3 align="center">
     ⚠ This module is not planned to be supported.
@@ -19,12 +18,12 @@
 
 PowerShell module (cross-platform cli client) for **free text translation** using [Google](https://github.com/matheuss/google-translate-api) (public [serverless](https://github.com/olavoparno/translate-serverless-vercel) on Vercel), [DeepLX](https://github.com/OwO-Network/DeepLX) (public [serverless](https://github.com/LegendLeo/deeplx-serverless) on [Vercel](https://github.com/bropines/Deeplx-vercel)), [MyMemory](https://mymemory.translated.net/doc/spec.php) and [Reverso](https://www.reverso.net/text-translation) providers via `REST API` (no token required).
 
-- [💡 About](#-about)
-- [🚀 Install module to Windows](#-install-module-to-windows)
-- [🐧 Install module to Linux](#-install-module-to-linux)
-- [🎉 Examples](#-examples)
-- [🔨 DeepLX](#-deeplx)
-- [📢 Module not using API](#-module-not-using-api)
+- 💡 [About](#-about)
+- 🚀 [Install module to Windows](#-install-module-to-windows)
+- 🐧 [Install module to Linux](#-install-module-to-linux)
+- 🎉 [Examples](#-examples)
+- 🔨 [DeepLX](#-deeplx)
+- 📢 [Module not using API](#-module-not-using-api)
 
 ## 💡 About
 
@@ -42,14 +41,16 @@ Tested on Windows 10/11 and Ubuntu Server 20.04+ using PowerShell Core version 7
 
 ## 🚀 Install module to Windows
 
-- Use the [NuGet](https://www.nuget.org/packages/Console-Translate) package manager (pre-register the repository if you haven't already):
+### [NuGet](https://www.nuget.org/packages/Console-Translate)
+
+> Pre-register the repository, if you haven't already.
 
 ```PowerShell
 Register-PSRepository -Name "NuGet" -SourceLocation "https://www.nuget.org/api/v2" -InstallationPolicy Trusted
 Install-Module Console-Translate -Repository NuGet
 ```
 
-- Use the [MyGet](https://www.myget.org/feed/lifailon/package/nuget/Console-Translate) package manager:
+### [MyGet](https://www.myget.org/feed/lifailon/package/nuget/Console-Translate)
 
 ```PowerShell
 Register-PSRepository -Name "lifailon" -SourceLocation "https://www.myget.org/F/lifailon/api/v2" -InstallationPolicy Trusted
@@ -64,13 +65,37 @@ choco install console-translate
 ```
 -->
 
-- Install a module from the GitHub repository with a single command in the console:
+### [Scoop](https://scoop.sh)
+
+- Install the package manager:
 
 ```PowerShell
-Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/Deploy-Console-Translate.ps1")
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser && irm https://get.scoop.sh | Invoke-Expression
 ```
 
-Import the module:
+- Install the module:
+
+```PowerShell
+scoop bucket add Console-Translate https://github.com/Lifailon/Console-Translate.git
+scoop install Console-Translate
+```
+
+- To remove module:
+
+```PowerShell
+scoop uninstall Console-Translate
+scoop Bucket rm Console-Translate
+```
+
+### [GitHub](https://github.com/Lifailon/Console-Translate)
+
+Deployment a module from the GitHub repository with a single command in the console:
+
+```PowerShell
+Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/deploy-module.ps1")
+```
+
+- Import the module:
 
 ```PowerShell
 Import-Module Console-Translate
@@ -102,7 +127,7 @@ sudo apt-get install -y powershell
 - Install module:
 
 ```shell
-pwsh -c 'Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/Deploy-Console-Translate.ps1")'
+pwsh -c 'Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Console-Translate/rsa/deploy-module.ps1")'
 ```
 
 Run the PowerShell interpreter using the `pwsh` command. All commands for Windows are identical for execution in Linux on PowerShell Core (pwsh).
@@ -253,7 +278,7 @@ The default port is `1188` and the api key is `7777777777`.
 **✉️ Execute a requests to the remote server:**
 
 ```PowerShell
-Get-DeepLX -Text "Получить выбор" -Server 192.168.3.100
+Get-DeepLX -Text "Get select" -Server 192.168.3.100
 Получить выбор
 
 Get-DeepLX -Text "Get select" -Server 192.168.3.100 -Port 1188 -Token "7777777777"
