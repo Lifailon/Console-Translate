@@ -1,5 +1,5 @@
 {
-    "version": "0.3.5",
+    "version": "0.3.6",
     "description": "PowerShell module (cross-platform cli client) for free text translation using Google, DeepL, MyMemory and Reverso providers via REST API",
     "homepage": "https://github.com/Lifailon/Console-Translate",
     "license": "MIT",

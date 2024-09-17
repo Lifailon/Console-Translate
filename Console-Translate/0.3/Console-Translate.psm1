@@ -397,7 +397,6 @@ function Get-DeepLX {
     )
     if ($Server -eq "localhost") {
         $Server_Running = "True"
-        Import-Module Console-Translate
         Start-DeepLX -Token $Token -Port $Port -Job
         if ($IsLinux) {
             Start-Sleep 0.5
