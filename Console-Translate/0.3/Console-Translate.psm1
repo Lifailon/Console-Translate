@@ -207,12 +207,12 @@ function Install-DeepLX {
     #     $path = ($env:PSModulePath.Split(";")[0])+"\Console-Translate"
     # }
     # $Module_Version = $(Get-ChildItem $path).Name
+    Import-Module Console-Translate
     $Module_Path = Split-Path $(Get-Module Console-Translate).path
     if ($IsLinux) {
         $DeepLX_Path = "$Module_Path/deeplx"
         $DeepLX_Releases_Latest = Invoke-RestMethod "https://api.github.com/repos/OwO-Network/DeepLX/releases/latest"
         [string]$DeepLX_Download_url = $($DeepLX_Releases_Latest.assets | Where-Object Name -Match "linux_amd64").browser_download_url
-        chmod +x $DeepLX_Path
     }
     else {
         $DeepLX_Path = "$Module_Path\deeplx.exe"
@@ -221,6 +221,9 @@ function Install-DeepLX {
     }
     #(New-Object Net.WebClient).DownloadString($DeepLX_Download_url) | Out-File $DeepLX_Path -Encoding default -Force
     Invoke-RestMethod -Uri $DeepLX_Download_url -OutFile $DeepLX_Path
+    if ($IsLinux) {
+        chmod +x $DeepLX_Path
+    }
 }
 
 function Start-DeepLX {
@@ -243,6 +246,7 @@ function Start-DeepLX {
         [switch]$Job,
         [switch]$Status
     )
+    Import-Module Console-Translate
     if ($IsLinux) {
         [string]$path = "$(Split-Path $(Get-Module Console-Translate).path)/deeplx"
     }
@@ -387,18 +391,17 @@ function Get-DeepLX {
             "UK",
             "ZH"
         )][string]$LanguageSource,
-        [string]$Server,
+        [string]$Server = "localhost",
         [int]$Port = 1188,
         [string]$Token = "7777777777"
     )
-    if ($Server) {
-        $Server_Running = "False"
-    }
-    else {
+    if ($Server -eq "localhost") {
         $Server_Running = "True"
-        $Server = "localhost"
-        Stop-DeepLX
+        Import-Module Console-Translate
         Start-DeepLX -Token $Token -Port $Port -Job
+        if ($IsLinux) {
+            Start-Sleep 0.5
+        }
     }
     $srv = $Server+":"+$Port
     $url = "http://$srv/translate"
@@ -416,8 +419,9 @@ function Get-DeepLX {
         $WebClient.Headers.Add($Token, $Header[$Token])
     }
     $Response = $WebClient.UploadString($url, "POST", $Body) | ConvertFrom-Json
-        # $Response.data
-        return $Response.alternatives
+    # $Response = Invoke-RestMethod $url -Body $Body -Method POST -Headers $Header
+    # $Response.data
+    $Response.alternatives
     if ($Server_Running -eq "True") {
         Stop-DeepLX
     }
