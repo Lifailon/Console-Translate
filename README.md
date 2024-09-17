@@ -18,6 +18,8 @@
 
 PowerShell module (cross-platform cli client) for **free text translation** using [Google](https://github.com/matheuss/google-translate-api) (public [serverless](https://github.com/olavoparno/translate-serverless-vercel) on Vercel), [DeepLX](https://github.com/OwO-Network/DeepLX) (public [serverless](https://github.com/LegendLeo/deeplx-serverless) on [Vercel](https://github.com/bropines/Deeplx-vercel)), [MyMemory](https://mymemory.translated.net/doc/spec.php) and [Reverso](https://www.reverso.net/text-translation) providers via `REST API` (no token required).
 
+This module also automates the process of installing, updating, managing and working with the DeepLX server.
+
 - 💡 [About](#-about)
 - 🚀 [Install module to Windows](#-install-module-to-windows)
 - 🐧 [Install module to Linux](#-install-module-to-linux)
@@ -83,8 +85,7 @@ scoop install Console-Translate
 - To remove module:
 
 ```PowerShell
-scoop uninstall Console-Translate
-scoop Bucket rm Console-Translate
+scoop uninstall Console-Translate && scoop Bucket rm Console-Translate
 ```
 
 ### [GitHub](https://github.com/Lifailon/Console-Translate)
@@ -169,22 +170,6 @@ Get-Translate "Module for text translation" -Provider Reverso
 
 ## 🔨 DeepLX
 
-Install or update the [DeepLX](https://github.com/OwO-Network/DeepLX) server executable for local or remote use with a single command (for Windows and Linux):
-
-```PowerShell
-Install-DeepLX
-```
-
-The following cmdlets are used to start and access the **DeepLX server**:
-
-```PowerShell
-Start-DeepLX
-Stop-DeepLX
-Get-DeepLX
-```
-
-### Supported languages
-
 Supported languages from the drop-down list (encoded in the parameter) with support for **automatic language detection at the api level**.
 
 | Abbr | EN (RU)                        |
@@ -222,43 +207,48 @@ Supported languages from the drop-down list (encoded in the parameter) with supp
 
 ### Local server
 
+Install or update the [DeepLX](https://github.com/OwO-Network/DeepLX) server executable for local or remote use with a single command (for Windows and Linux):
+
+```PowerShell
+Install-DeepLX
+```
+
 When calling the module, if the remote server address is not specified (**parameter: Server**), the **local server is started for the time of sending a request and receiving a response**, after which the server stops, it allows not to keep resources and socket open.
 
 ```PowerShell
 # Russian to English
-Get-DeepLX "Получить выбор"
-Get a choice
-Get the choice
-Get your choice
+Get-DeepLX "Помоги перевести текст"
+Help translate a text
+Help translate the text
+Help me translate a text
 
 # English to Russian
-Get-DeepLX "Get select" ru
-Выбрать
-Выберите
-Получите выбор
+Get-DeepLX "Help translate text" ru
+Помочь перевести текст
+Помощь в переводе текста
 
 # English to Japanese
-Get-DeepLX "Get select" ja
-セレクトする
-セレクト
-選択
+Get-DeepLX "Help translate text" ja
+テキストの翻訳を手伝う
+テキストを翻訳する
+テキストの翻訳を支援
 
 # Japanese to Russian
-Get-DeepLX "セレクトする" ru
-Выбирайте
-Выбрать
+Get-DeepLX "テキストの翻訳を手伝う" ru
+Помогите перевести тексты.
+Помогите переводить тексты.
+Помогите перевести текст.
 
 # English to Chinese
-Get-DeepLX "Get select" zh
-获得选择
-选择
-进行选择
+Get-DeepLX "Help translate text" zh
+帮助翻译文字
+协助翻译文本
 
 # English to Turkish
-Get-DeepLX "Get select" tr
-Seçim yapın
-Seçiniz
-Seçin
+Get-DeepLX "Help translate text" tr
+Metni çevirmeye yardımcı olun
+Metin çevirisine yardım edin
+Metni çevirmeye yardım et
 ```
 
 ### Remote server
@@ -269,26 +259,32 @@ If you need to use a single server to handle all requests from multiple clients 
 
 ```PowerShell
 Start-DeepLX -Job
+
 Start-DeepLX -Status
 Running
 ```
 
-The default port is `1188` and the api key is `7777777777`.
+This will allow you to run the server in the backgroundю. The default port is `1188` and the api token (this key is used for authorization on the server) is `7777777777`.
 
 **✉️ Execute a requests to the remote server:**
 
 ```PowerShell
-Get-DeepLX -Text "Get select" -Server 192.168.3.100
-Получить выбор
+Get-DeepLX -Text "Перевод текста на удаленном сервере" -Server 192.168.3.100
+Translation of text on a remote server
+Translate a text on a remote server
+Translating text on a remote server
 
-Get-DeepLX -Text "Get select" -Server 192.168.3.100 -Port 1188 -Token "7777777777"
-Получить выбор
+Get-DeepLX -Text "Перевод текста на удаленном сервере" -Server 192.168.3.100 -Port 1188 -Token "7777777777"
+Translation of text on a remote server
+Translate a text on a remote server
+Translating text on a remote server
 ```
 
 **Server stop:**
 
 ```PowerShell
 Stop-DeepLX
+
 Start-DeepLX -Status
 Not running
 ```
