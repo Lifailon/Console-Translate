@@ -255,7 +255,7 @@ Metni çevirmeye yardım et
 
 If you need to use a single server to handle all requests from multiple clients on the network, you can use this construct:
 
-**📭 Start the server:**
+📭 **Start the server:**
 
 ```PowerShell
 Start-DeepLX -Job
@@ -267,7 +267,7 @@ Running
 
 This will allow you to run the server in the backgroundю. The default port is `1188` and the api token (this key is used for authorization on the server) is `7777777777`.
 
-**✉️ Execute a requests to the remote server:**
+✉️ **Execute a requests to the remote server:**
 
 ```PowerShell
 Get-DeepLX -Text "Перевод текста на удаленном сервере" -Server 192.168.3.100
@@ -281,7 +281,7 @@ Translate a text on a remote server
 Translating text on a remote server
 ```
 
-**Server stop:**
+✋ **Server stop:**
 
 ```PowerShell
 Stop-DeepLX
