@@ -265,12 +265,13 @@ function Start-DeepLX {
         if ($Job) {
             $Test = Get-Job -Name DeepLX -ErrorAction Ignore
             if ($Test) {
-                Write-Host "Server is running" -ForegroundColor Green
+                Write-Host "The server is already running" -ForegroundColor Green
             }
             else {
                 Start-Job -Name DeepLX {
                     Invoke-Expression "$using:path --token $using:Token --port $using:Port"
                 } > $null
+                Write-Host "The server is running in the background job of the current session" -ForegroundColor Green
             }
             }
         else {

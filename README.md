@@ -259,6 +259,7 @@ If you need to use a single server to handle all requests from multiple clients 
 
 ```PowerShell
 Start-DeepLX -Job
+The server is running in the background job of the current session
 
 Start-DeepLX -Status
 Running
