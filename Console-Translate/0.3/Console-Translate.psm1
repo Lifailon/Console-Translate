@@ -238,8 +238,8 @@ function Start-DeepLX {
     https://github.com/OwO-Network/DeepLX
     #>
     param (
-        [string]$Token = "7777777777",
         [int]$Port = 1188,
+        [string]$Token = "7777777777",
         [switch]$Job,
         [switch]$Status
     )
@@ -249,7 +249,7 @@ function Start-DeepLX {
     else {
         [string]$Path = "$(Split-Path $(Get-Module Console-Translate).path)\deeplx.exe"
     }
-    if (Test-Path $path -eq $false) {
+    if ($(Test-Path $path) -eq $false) {
         Install-DeepLX
     }
     if ($Status) {
@@ -304,16 +304,16 @@ function Get-DeepLX {
     For a local request, the server is started for the duration of the get response
     .DESCRIPTION
     Example use local server:
-        Get-DeepLX "Получить выбор"
-        Get-DeepLX "Получить выбор" en
-        Get-DeepLX "Get select" ru
-        Get-DeepLX "Get select" ja # English to Japanese
-        Get-DeepLX "セレクトする" ru # Japanese to Russian
-        Get-DeepLX "Get select" zh # English to Chinese
-        Get-DeepLX "Get select" tr # English to Turkish
+        Get-DeepLX "Помоги перевести текст"
+        Get-DeepLX "Помоги перевести текст" en
+        Get-DeepLX "Help translate text" ru
+        Get-DeepLX "Help translate text" ja # English to Japanese
+        Get-DeepLX "テキストの翻訳を手伝う" ru # Japanese to Russian
+        Get-DeepLX "Help translate text" zh # English to Chinese
+        Get-DeepLX "Help translate text" tr # English to Turkish
     Example use remote server:
-        Get-DeepLX -Text "Получить выбор" -Server 192.168.3.100
-        Get-DeepLX -Text "Get select" -Server 192.168.3.100 -Port 1188 -Token "7777777777"
+        Get-DeepLX -Text "Перевод текста на удаленном сервере" -Server 192.168.3.100
+        Get-DeepLX -Text "Перевод текста на удаленном сервере" -Server 192.168.3.100 -Port 1188 -Token "7777777777"
     .LINK
     https://github.com/Lifailon/Console-Translate
     https://nuget.org/packages/Console-Translate
@@ -388,8 +388,8 @@ function Get-DeepLX {
             "ZH"
         )][string]$LanguageSource,
         [string]$Server,
-        [string]$Token = "7777777777",
-        [int]$Port = 1188
+        [int]$Port = 1188,
+        [string]$Token = "7777777777"
     )
     if ($Server) {
         $Server_Running = "False"
