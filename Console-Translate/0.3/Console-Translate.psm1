@@ -271,7 +271,6 @@ function Start-DeepLX {
                 Start-Job -Name DeepLX {
                     Invoke-Expression "$using:path --token $using:Token --port $using:Port"
                 } > $null
-                Write-Host "The server is running in the background job of the current session" -ForegroundColor Green
             }
             }
         else {
