@@ -1,12 +1,12 @@
 {
-  "version": "0.3.2",
-  "description": "PowerShell module (cross-platform cli client) for free text translation using Google (public serverless on Vercel), DeepLX (public serverless on Vercel), MyMemory and Reverso providers via REST API (no token required).",
-  "homepage": "https://github.com/Lifailon/Console-Translate",
-  "license": "MIT",
-  "url": "https://github.com/Lifailon/Console-Translate/archive/refs/heads/rsa.zip",
-  "extract_dir": "Console-Translate",
-  "bin": "Console-Translate.psm1",
-  "psmodule": {
-    "name": "Console-Translate"
-  }
+    "version": "0.3.2",
+    "description": "PowerShell module (cross-platform cli client) for free text translation using Google (public serverless on Vercel), DeepLX (public serverless on Vercel), MyMemory and Reverso providers via REST API (no token required).",
+    "homepage": "https://github.com/Lifailon/Console-Translate",
+    "psmodule": {
+      "name": "Console-Translate"
+    },
+    "license": "MIT",
+    "hash": "1842F3CAE6C1AD77869083B5312A47DAA900934C799A51177BA51F8D40E9D410",
+    "url": "https://github.com/Lifailon/Console-Translate/archive/refs/heads/rsa.zip",
+    "post_install": "PowerShell -NoProfile -ExecutionPolicy Bypass -Command \"& $dir\\Deploy-Console-Translate.ps1\""
 }
