@@ -4,6 +4,7 @@
     "homepage": "https://github.com/Lifailon/Console-Translate",
     "url": "https://github.com/Lifailon/Console-Translate/archive/refs/heads/rsa.zip",
     "hash": "1842F3CAE6C1AD77869083B5312A47DAA900934C799A51177BA51F8D40E9D410",
+    "extract_dir": "Console-Translate-rsa/Console-Translate",
     "psmodule": {
         "name": "Console-Translate"
     },
